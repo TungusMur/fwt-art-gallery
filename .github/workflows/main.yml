@@ -13,6 +13,5 @@ jobs:	                // группировка работ, которые до�
         run: npm i		// какая команда запускается на сервере
 
       - name: Deploy to gh-pages
-        run: |         // символ | если команды идут несколько подряд 
-   		git remote set-url origin https://git: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@github.com/fwt-art-gallery.git
-           npm run deploy
+        run: git remote set-url origin https://git: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@github.com/fwt-art-gallery.git
+             npm run deploy
