@@ -1,0 +1,18 @@
+name: CI                            // имя потока 
+on:
+branch
+  pull_request:
+    branches: [ master ]      // на эту ветку вешаем наблюдатель за pull request
+jobs:	                // группировка работ, которые должны быть сделаны
+  build:              // имя первой работы
+    runs-on: ubuntu-latest
+    steps:                		 // шаги в каждой работе
+      - uses: actions/checkout@v2
+      
+      - name: npm install        // имя шага, желательно понятное
+        run: npm i		// какая команда запускается на сервере
+
+      - name: Deploy to gh-pages
+        run: |         // символ | если команды идут несколько подряд 
+   		git remote set-url origin https://git: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@github.com/fwt-art-gallery.git
+           npm run deploy
