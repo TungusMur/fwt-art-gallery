@@ -1,0 +1,20 @@
+html {
+    --primary-width: 1440px;
+    --grid-width: 1240px;
+    --header-height: 80px;
+    --footer-height: 166px;
+    @media screen and (max-width: 1440px) {
+        --primary-width: 1280px;
+    }
+    @media screen and (max-width: 1280px) {
+        --primary-width: 768px;
+        --grid-width: 728px;
+        --header-height: 88px;
+    }
+    @media screen and (max-width: 768px) {
+        --primary-width: 320px;
+        --grid-width: 280px;
+        --header-height: 64px;
+        --footer-height: 185px;
+    }
+}

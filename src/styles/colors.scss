@@ -1,0 +1,18 @@
+html {
+    &[data-theme='light'] {
+        --primary-color: #ffffff;
+        --primary-color-gray: #dedede;
+        --secondary-color: #fcfcfc;
+    }
+
+    &[data-theme='dark'] {
+        --primary-color: #121212;
+        --primary-color-gray: #575757;
+        --secondary-color: #1a1818;
+    }
+
+    --secondary-color-gray: #9c9c9c;
+    --accent-color-red: #9b4b4b;
+    --accent-color-gold: #ab8956;
+    --accent-color-error: #ae2917;
+}
