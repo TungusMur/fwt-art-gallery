@@ -1,4 +1,10 @@
 {
+  "settings": {
+    "react": {
+      "pragma": "React",  
+      "version": "detect"
+    }
+  },
   "env": {
     "browser": true,
     "es2021": true
@@ -11,7 +17,8 @@
     "eslint-config-airbnb-typescript",
     "plugin:prettier/recommended",
     "prettier",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:storybook/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
