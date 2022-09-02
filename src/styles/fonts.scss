@@ -57,6 +57,10 @@ h4 {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
+
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
 }
 
 h5 {
@@ -87,11 +91,36 @@ h6 {
 }
 
 .paragraph-light {
-    font-family: 'Inter Light';
+    &-base {
+        font-family: 'Inter Light';
+        font-size: 16px;
+    }
+    &-small {
+        font-family: 'Inter Light';
+        font-size: 12px;
+    }
 }
 
 .paragraph-medium {
-    font-family: 'Inter Medium';
+    &-base {
+        font-family: 'Inter Medium';
+        font-size: 16px;
+        font-weight: 700;
+    }
+    &-small {
+        font-family: 'Inter Medium';
+        font-size: 12px;
+        font-weight: 700;
+
+        @media screen and (max-width: 768px) {
+            font-size: 8px;
+        }
+    }
+    &-tiny {
+        font-family: 'Inter Medium';
+        font-size: 8px;
+        font-weight: 700;
+    }
 }
 
 .caption-bold {
