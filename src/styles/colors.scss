@@ -1,22 +1,20 @@
-#root {
-    &[data-theme='light'] {
-        --primary-color: #ffffff;
-        --color: #121212;
-        --primary-color-gray: #dedede;
-        --secondary-color: #fcfcfc;
-        --accent-color: #ab8956;
-    }
-
-    &[data-theme='dark'] {
-        --primary-color: #121212;
-        --color: #ffffff;
-        --primary-color-gray: #575757;
-        --secondary-color: #1a1818;
-        --accent-color: #9b4b4b;
-    }
-
+:root {
     --secondary-color-gray: #9c9c9c;
     --accent-color-red: #9b4b4b;
     --accent-color-gold: #ab8956;
     --accent-color-error: #ae2917;
+}
+html[data-theme='light'] {
+    --primary-color: #ffffff;
+    --color: #121212;
+    --primary-color-gray: #dedede;
+    --secondary-color: #fcfcfc;
+    --accent-color: #ab8956;
+}
+html[data-theme='dark'] {
+    --primary-color: #121212;
+    --color: #ffffff;
+    --primary-color-gray: #575757;
+    --secondary-color: #1a1818;
+    --accent-color: #9b4b4b;
 }

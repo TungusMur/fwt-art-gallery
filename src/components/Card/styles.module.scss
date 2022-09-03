@@ -1,4 +1,4 @@
-@import url('../../styles.scss');
+@import '../../styles.scss';
 
 .card {
     height: inherit;
@@ -53,7 +53,6 @@
 }
 
 .card-yearsLife {
-    width: 70px;
     color: var(--accent-color);
 }
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import CardType from '../commonTypes';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 type ICard = CardType & {
     theme?: 'light' | 'dark';
@@ -10,30 +10,30 @@ const Card = ({
     titel,
     img,
     onClick,
-    className,
-    yearsLife,
+    yearBirth,
+    yearDead,
     theme = 'light',
 }: ICard) => {
     useEffect(() => {
-        document.querySelector('#root')?.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
     }, [theme]);
 
     return (
-        <div className={className} onClick={onClick}>
-            <img src={img} className={`${className}-img`} />
-            <div className={`${className}-content`}>
-                <div className={`${className}-description`}>
-                    <div className={`${className}-titel`}>
+        <div className={styles.card} onClick={onClick}>
+            <img src={img} className={styles['card-img']} />
+            <div className={styles['card-content']}>
+                <div className={styles['card-description']}>
+                    <div className={styles['card-titel']}>
                         <h4>{titel}</h4>
                     </div>
-                    <div className={`${className}-yearsLife`}>
-                        <div className="paragraph-medium-small">
-                            {yearsLife}
+                    <div className="paragraph-medium-small">
+                        <div className={styles['card-yearsLife']}>
+                            {yearBirth} - {yearDead}
                         </div>
                     </div>
                 </div>
-                <div className={`${className}-curtain`}>
-                    <div className={`${className}-arrow`}></div>
+                <div className={styles['card-curtain']}>
+                    <div className={styles['card-arrow']}></div>
                 </div>
             </div>
         </div>

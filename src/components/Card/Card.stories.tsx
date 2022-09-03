@@ -16,6 +16,6 @@ Primary.args = {
     onClick: () => {
         console.log('click');
     },
-    className: 'card',
-    yearsLife: `${1732} - ${1806}`,
+    yearBirth: 1732,
+    yearDead: 1806,
 };

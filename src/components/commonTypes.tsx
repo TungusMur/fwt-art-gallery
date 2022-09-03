@@ -4,7 +4,9 @@ type CardType = {
     img: string;
     onClick?: () => void;
     className?: string;
-    yearsLife?: string;
+    // yearsLife?: string;
+    yearBirth?: number;
+    yearDead?: number;
 };
 
 export default CardType;
