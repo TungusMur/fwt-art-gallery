@@ -3,8 +3,6 @@ type CardType = {
     name: string;
     img: string;
     onClick?: () => void;
-    className?: string;
-    // yearsLife?: string;
     yearBirth?: number;
     yearDead?: number;
 };
