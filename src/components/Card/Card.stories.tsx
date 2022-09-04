@@ -3,7 +3,7 @@ import DesktopImg from '../../assets/img/card/Desktop.png';
 import Card from './Card';
 
 export default {
-    title: 'Card',
+    titel: 'Card',
     component: Card,
 } as ComponentMeta<typeof Card>;
 
@@ -11,9 +11,10 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
+    name: '',
     titel: 'Jean-Honore Fragonard',
     img: DesktopImg,
-    onClick: () => {
+    handleClick: () => {
         console.log('click');
     },
     yearBirth: 1732,

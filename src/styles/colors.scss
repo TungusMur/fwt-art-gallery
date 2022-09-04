@@ -6,15 +6,15 @@
 }
 html[data-theme='light'] {
     --primary-color: #ffffff;
-    --color: #121212;
     --primary-color-gray: #dedede;
+    --text-color: #121212;
     --secondary-color: #fcfcfc;
-    --accent-color: #ab8956;
+    --accent-color: #9b4b4b;
 }
 html[data-theme='dark'] {
     --primary-color: #121212;
-    --color: #ffffff;
     --primary-color-gray: #575757;
+    --text-color: #ffffff;
     --secondary-color: #1a1818;
-    --accent-color: #9b4b4b;
+    --accent-color: #ab8956;
 }

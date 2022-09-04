@@ -6,7 +6,7 @@ type ICard = CardType & {
     theme?: 'light' | 'dark';
 };
 
-const Card = ({ titel, img, ...props }: ICard) => {
+const Card = ({ name, titel, img, ...props }: ICard) => {
     useEffect(() => {
         document.documentElement.setAttribute(
             'data-theme',
@@ -15,21 +15,26 @@ const Card = ({ titel, img, ...props }: ICard) => {
     }, [props.theme]);
 
     return (
-        <div className={styles.card} onClick={props.onClick}>
-            <img src={img} className={styles['card-img']} />
-            <div className={styles['card-content']}>
-                <div className={styles['card-description']}>
-                    <div className={styles['card-titel']}>
+        <div className={styles.card} onClick={props.handleClick}>
+            <img alt={titel} src={img} className={styles.cardImg} />
+            <div className={styles.cardContent}>
+                <div className={styles.cardDescription}>
+                    <div className={styles.cardTitel}>
                         <h4>{titel}</h4>
                     </div>
-                    <div className="paragraph-medium-small">
-                        <div className={styles['card-yearsLife']}>
+                    <div
+                        className={[
+                            styles['paragraph-medium'],
+                            styles['paragraph-medium-small'],
+                        ].join(' ')}
+                    >
+                        <div className={styles.cardYearsLife}>
                             {props.yearBirth} - {props.yearDead}
                         </div>
                     </div>
                 </div>
-                <div className={styles['card-curtain']}>
-                    <div className={styles['card-arrow']}></div>
+                <div className={styles.cardCurtain}>
+                    <div className={styles.cardArrow}></div>
                 </div>
             </div>
         </div>

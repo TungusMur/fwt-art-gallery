@@ -102,24 +102,21 @@ h6 {
 }
 
 .paragraph-medium {
+    font-family: 'Inter Medium';
+    font-weight: 700;
+    
     &-base {
-        font-family: 'Inter Medium';
         font-size: 16px;
-        font-weight: 700;
     }
     &-small {
-        font-family: 'Inter Medium';
         font-size: 12px;
-        font-weight: 700;
 
         @media screen and (max-width: 768px) {
             font-size: 8px;
         }
     }
     &-tiny {
-        font-family: 'Inter Medium';
         font-size: 8px;
-        font-weight: 700;
     }
 }
 
