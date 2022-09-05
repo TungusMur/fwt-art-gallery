@@ -105,17 +105,17 @@ h6 {
     font-family: 'Inter Medium';
     font-weight: 700;
     
-    &-base {
+    &.base {
         font-size: 16px;
     }
-    &-small {
+    &.small {
         font-size: 12px;
 
         @media screen and (max-width: 768px) {
             font-size: 8px;
         }
     }
-    &-tiny {
+    &.tiny {
         font-size: 8px;
     }
 }

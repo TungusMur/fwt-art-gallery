@@ -9,4 +9,4 @@ export default {
 const Template: ComponentStory<typeof Link> = (args) => <Link {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = { content: 'asd', url: '/' };
+Primary.args = { content: 'Normal link', url: '/' };

@@ -22,12 +22,7 @@ const Card = ({ name, titel, img, ...props }: ICard) => {
                     <div className={styles.cardTitel}>
                         <h4>{titel}</h4>
                     </div>
-                    <div
-                        className={[
-                            styles['paragraph-medium'],
-                            styles['paragraph-medium-small'],
-                        ].join(' ')}
-                    >
+                    <div className={'paragraph-medium small'}>
                         <div className={styles.cardYearsLife}>
                             {props.yearBirth} - {props.yearDead}
                         </div>
