@@ -1,0 +1,25 @@
+.link {
+    text-decoration: none;
+    font-family: 'Inter Medium';
+    font-weight: 500;
+    font-size: 16px;
+    display: initial;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background: var(--primary-color-gray);
+    }
+
+    color: var(--primary-color-gray);
+
+    &:hover {
+        color: var(--text-color);
+        &::before {
+            background: var(--text-color);
+        }
+    }
+}
