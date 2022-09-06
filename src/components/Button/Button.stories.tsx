@@ -12,4 +12,5 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: <p>Button text</p>,
     className: 'btnText',
+    isFalled: true,
 };
