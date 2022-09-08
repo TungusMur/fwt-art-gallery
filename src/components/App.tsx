@@ -1,7 +1,10 @@
-import './styles.scss';
+import classNames from 'classnames/bind';
+import styles from './styles.scss';
+
+const cx = classNames.bind(styles);
 
 const App = () => {
-    return <div className="app"></div>;
+  return <div className={cx('app')}></div>;
 };
 
 export default App;

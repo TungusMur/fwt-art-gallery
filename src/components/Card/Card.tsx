@@ -1,39 +1,39 @@
 import { useEffect } from 'react';
-import CardType from '../commonTypes';
-import styles from './styles.module.scss';
+import classNames from 'classnames/bind';
+import type from '../commonTypes';
+import styles from './styles.scss';
 
-type ICard = CardType & {
-    theme?: 'light' | 'dark';
+const cx = classNames.bind(styles);
+
+type ICard = type & {
+  theme?: 'light' | 'dark';
 };
 
-const Card = ({ name, titel, img, ...props }: ICard) => {
-    useEffect(() => {
-        document.documentElement.setAttribute(
-            'data-theme',
-            props.theme || 'light'
-        );
-    }, [props.theme]);
+const Card = ({ name, title, img, theme = 'light', ...args }: ICard) => {
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
-    return (
-        <div className={styles.card} onClick={props.handleClick}>
-            <img alt={titel} src={img} className={styles.cardImg} />
-            <div className={styles.cardContent}>
-                <div className={styles.cardDescription}>
-                    <div className={styles.cardTitel}>
-                        <h4>{titel}</h4>
-                    </div>
-                    <div className={'paragraph-medium small'}>
-                        <div className={styles.cardYearsLife}>
-                            {props.yearBirth} - {props.yearDead}
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.cardCurtain}>
-                    <div className={styles.cardArrow}></div>
-                </div>
+  return (
+    <div className={cx('card')} onClick={args.handleClick}>
+      <img alt={title} src={img} className={cx('card-img')} />
+      <div className={cx('card-content')}>
+        <div className={cx('card-description')}>
+          <div className={cx('card-title')}>
+            <h4>{title}</h4>
+          </div>
+          <div className={cx('paragraph_medium', 'paragraph_medium_small')}>
+            <div className={cx('card-yearsLife')}>
+              {args.yearBirth} - {args.yearDead}
             </div>
+          </div>
         </div>
-    );
+        <div className={cx('card-curtain')}>
+          <div className={cx('card-arrow')}></div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Card;

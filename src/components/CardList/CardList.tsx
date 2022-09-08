@@ -1,37 +1,39 @@
 import { useEffect } from 'react';
-import CardType from '../commonTypes';
+import classNames from 'classnames/bind';
 import Card from '../Card';
-import styles from './styles.module.scss';
+import type from '../commonTypes';
+import styles from './styles.scss';
+
+const cx = classNames.bind(styles);
 
 type ICardsData = {
-    cardsData: CardType[];
-    theme?: 'light' | 'dark';
+  cardsData: type[];
+  theme?: 'light' | 'dark';
 };
 
-const CardList = ({ cardsData, ...props }: ICardsData) => {
-    useEffect(() => {
-        document.documentElement.setAttribute(
-            'data-theme',
-            props.theme || 'light'
-        );
-    }, [props.theme]);
+const CardList = ({ cardsData, theme = 'light' }: ICardsData) => {
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
-    return (
-        <div className={styles.cardList}>
-            {cardsData.map((item: CardType) => (
-                <div className={styles.cardListItem} key={item.id}>
-                    <Card
-                        name={item.name}
-                        handleClick={item.handleClick}
-                        titel={item.titel}
-                        img={item.img}
-                        yearBirth={item.yearBirth}
-                        yearDead={item.yearDead}
-                    />
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <div className={cx('cardList')}>
+      {cardsData.map(
+        ({ id, name, handleClick, title, img, yearBirth, yearDead }) => (
+          <div className={cx('cardList-item')} key={id}>
+            <Card
+              name={name}
+              handleClick={handleClick}
+              title={title}
+              img={img}
+              yearBirth={yearBirth}
+              yearDead={yearDead}
+            />
+          </div>
+        )
+      )}
+    </div>
+  );
 };
 
 export default CardList;

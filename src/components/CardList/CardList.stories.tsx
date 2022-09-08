@@ -17,7 +17,7 @@ Primary.args = {
         {
             id: 0,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -28,7 +28,7 @@ Primary.args = {
         {
             id: 1,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -39,7 +39,7 @@ Primary.args = {
         {
             id: 2,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -50,7 +50,7 @@ Primary.args = {
         {
             id: 3,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -61,7 +61,7 @@ Primary.args = {
         {
             id: 4,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -72,7 +72,7 @@ Primary.args = {
         {
             id: 5,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -83,7 +83,7 @@ Primary.args = {
         {
             id: 6,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -94,7 +94,7 @@ Primary.args = {
         {
             id: 7,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');
@@ -105,7 +105,7 @@ Primary.args = {
         {
             id: 8,
             name: '',
-            titel: 'Jean-Honore Fragonard',
+            title: 'Jean-Honore Fragonard',
             img: DesktopImg,
             handleClick: () => {
                 console.log('click');

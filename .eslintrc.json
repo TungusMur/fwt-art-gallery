@@ -27,8 +27,9 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "import", "storybook"],
   "rules": {
+    "indent": ["error", 2],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off"  
