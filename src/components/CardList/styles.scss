@@ -3,22 +3,28 @@
   background-color: var(--primary-color);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 32px;
+
+  @media screen and (max-width: 1400px) {
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: 20px;
+  }
 }
 
 .cardList-item {
   width: 392px;
   height: 260px;
-  margin-bottom: 32px;
 
   @media screen and (max-width: 1400px) {
     width: 352px;
     height: 220px;
-    margin-bottom: 24px;
   }
   @media screen and (max-width: 768px) {
     width: 280px;
     height: 185px;
-    margin-bottom: 20px;
   }
 }

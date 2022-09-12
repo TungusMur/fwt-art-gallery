@@ -16,7 +16,7 @@ const Card = ({ name, title, img, theme = 'light', ...args }: ICard) => {
 
   return (
     <div className={cx('card')} onClick={args.handleClick}>
-      <img alt={title} src={img} className={cx('card-img')} />
+      <img alt={title} src={img} className={cx('card__img')} />
       <div className={cx('card-content')}>
         <div className={cx('card-description')}>
           <div className={cx('card-title')}>

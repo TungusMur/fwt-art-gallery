@@ -1,6 +1,6 @@
 .card {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
   position: relative;
 
   &:hover {
@@ -12,7 +12,7 @@
   }
 }
 
-.card-img {
+.card__img {
   height: 100%;
   width: 100%;
 }
