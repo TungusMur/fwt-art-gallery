@@ -5,6 +5,7 @@ import './styles.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
-    <App />
+    {/* <App /> */}
+    <h1>asd</h1>
   </BrowserRouter>
 );
