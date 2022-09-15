@@ -17,7 +17,7 @@ const Link = ({ url, content, theme = 'light', ...args }: ILink) => {
   }, [theme]);
 
   return (
-    <a className={cx('link')} href={url}>
+    <a className={cx('link')} href={url} {...args}>
       {content}
     </a>
   );

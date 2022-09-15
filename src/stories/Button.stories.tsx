@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Button from './Button';
+import Button from '../ui-components/Button/Button';
 
 export default {
   titel: 'Button',
@@ -10,7 +10,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: <p>Button text</p>,
-  className: 'btnText',
+  children: 'Button text',
+  className: 'btn-text',
   isFalled: true,
 };

@@ -29,9 +29,10 @@
   &::before {
     width: 2px;
     height: 42px;
-    background-color: var(--accent-color-gold);
+    background-color: var(--accent-color);
     content: '';
     position: absolute;
+    z-index: 2;
   }
 
   @media screen and (max-width: 1440px) {
@@ -84,7 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.5s all;
+  transition: 0.5s;
 }
 
 .card-arrow {

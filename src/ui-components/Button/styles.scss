@@ -5,7 +5,7 @@ button {
   background: none;
 }
 
-.btnCommon {
+.btn {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -64,11 +64,11 @@ button {
   }
 }
 
-.btnText {
+.btn-text {
   width: auto;
   height: auto;
 
-  p {
+  // p {
     position: relative;
 
     &::before {
@@ -78,7 +78,7 @@ button {
       width: 100%;
       height: 1px;
     }
-  }
+  // }
 
   &.btn_falled {
     background: none;
@@ -87,14 +87,22 @@ button {
   &.light {
     color: var(--primary-color-dark-gray);
 
-    p::before {
+    // p::before {
+    //   background: var(--primary-color-dark-gray);
+    // }
+
+    &::before {
       background: var(--primary-color-dark-gray);
     }
 
     &:disabled {
       color: var(--primary-color-light-gray);
 
-      p::before {
+      // p::before {
+      //   background: var(--primary-color-light-gray);
+      // }
+
+      &::before {
         background: var(--primary-color-light-gray);
       }
     }
@@ -105,7 +113,11 @@ button {
       color: var(--primary-color-black);
       background: none;
 
-      p::before {
+      // p::before {
+      //   background: var(--primary-color-black);
+      // }
+
+      &::before {
         background: var(--primary-color-black);
       }
     }
@@ -114,14 +126,22 @@ button {
   &.dark {
     color: var(--primary-color-light-gray);
 
-    p::before {
+    // p::before {
+    //   background: var(--primary-color-light-gray);
+    // }
+
+    &::before {
       background: var(--primary-color-light-gray);
     }
 
     &:disabled {
       color: var(--secondary-color-gray);
 
-      p::before {
+      // p::before {
+      //   background: var(--secondary-color-gray);
+      // }
+
+      &::before {
         background: var(--secondary-color-gray);
       }
     }
@@ -132,14 +152,18 @@ button {
       color: var(--primary-color-white);
       background: none;
 
-      p::before {
+      // p::before {
+      //   background: var(--primary-color-white);
+      // }
+
+      &::before {
         background: var(--primary-color-white);
       }
     }
   }
 }
 
-.btnIcon {
+.btn-icon {
   width: 28px;
   height: 28px;
   border-radius: 4px;
@@ -175,7 +199,7 @@ button {
   }
 }
 
-.btnTheme {
+.btn-theme {
   border-radius: 20px;
   box-shadow: none;
   height: 40px;
@@ -204,7 +228,7 @@ button {
   }
 }
 
-.btnAction {
+.btn-action {
   border-radius: 20px;
   height: 60px;
   width: 60px;

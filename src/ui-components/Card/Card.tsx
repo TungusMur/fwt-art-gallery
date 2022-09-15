@@ -1,15 +1,23 @@
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import type from '../commonTypes';
+import { ICommonCard } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
-type ICard = type & {
+type ICard = ICommonCard & {
   theme?: 'light' | 'dark';
 };
 
-const Card = ({ name, title, img, theme = 'light', ...args }: ICard) => {
+const Card = ({
+  name,
+  title,
+  img,
+  theme = 'light',
+  yearBirth,
+  yearDead,
+  ...args
+}: ICard) => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -24,7 +32,7 @@ const Card = ({ name, title, img, theme = 'light', ...args }: ICard) => {
           </div>
           <div className={cx('paragraph_medium', 'paragraph_medium_small')}>
             <div className={cx('card-yearsLife')}>
-              {args.yearBirth} - {args.yearDead}
+              {yearBirth} - {yearDead}
             </div>
           </div>
         </div>

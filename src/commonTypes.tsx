@@ -1,4 +1,4 @@
-type CardType = {
+export type ICommonCard = {
   id?: number;
   title: string;
   name: string;
@@ -7,5 +7,3 @@ type CardType = {
   yearBirth?: number;
   yearDead?: number;
 };
-
-export default CardType;

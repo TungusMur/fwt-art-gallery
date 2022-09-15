@@ -4,15 +4,15 @@ import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
-interface IButton {
+type IButton = {
   children: ReactNode;
-  className: string;
+  className?: string;
   theme?: 'light' | 'dark';
   isFalled?: boolean;
   isOutlined?: boolean;
   isDisabled?: boolean;
   args?: HTMLButtonElement;
-}
+};
 
 const Button = ({
   children,
@@ -24,12 +24,13 @@ const Button = ({
   ...args
 }: IButton) => (
   <button
-    className={cx('btnCommon', className, theme, {
+    className={cx('btn', className, theme, {
       btn_falled: isFalled,
       btn_outlined: isOutlined,
       btn_disabled: isDisabled,
     })}
     disabled={isDisabled}
+    {...args}
   >
     {children}
   </button>

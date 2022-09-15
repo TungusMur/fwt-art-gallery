@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DesktopImg from '../../assets/img/card/Desktop.png';
-import CardList from './CardList';
+import DesktopImg from '../assets/img/card/Desktop.png';
+import CardList from '../ui-components/CardList/CardList';
 
 export default {
   titel: 'CardList',
@@ -14,17 +14,6 @@ const Template: ComponentStory<typeof CardList> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   cardsData: [
-    {
-      id: 0,
-      name: '',
-      title: 'Jean-Honore Fragonard',
-      img: DesktopImg,
-      handleClick: () => {
-        console.log('click');
-      },
-      yearBirth: 1732,
-      yearDead: 1806,
-    },
     {
       id: 1,
       name: '',
