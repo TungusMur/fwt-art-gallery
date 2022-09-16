@@ -24,7 +24,6 @@ const Card = ({
 
   return (
     <div className={cx('card')} onClick={args.handleClick}>
-      {/* <img alt={title} src={img} className={cx('card__img')} /> */}
       <div
         className={cx('card-img')}
         style={{ backgroundImage: `url(${img})` }}

@@ -24,7 +24,7 @@ const Button = ({
   ...args
 }: IButton) => (
   <button
-    className={cx('btn', className, theme, {
+    className={cx('btn', className, `btn_theme_${theme}`, {
       btn_falled: isFalled,
       btn_outlined: isOutlined,
       btn_disabled: isDisabled,
