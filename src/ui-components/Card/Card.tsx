@@ -14,8 +14,7 @@ const Card = ({
   title,
   img,
   theme = 'light',
-  yearBirth,
-  yearDead,
+  yearsLife,
   ...args
 }: ICard) => {
   useEffect(() => {
@@ -34,9 +33,7 @@ const Card = ({
             <h4>{title}</h4>
           </div>
           <div className={cx('paragraph_medium', 'paragraph_medium_small')}>
-            <div className={cx('card-yearsLife')}>
-              {yearBirth} - {yearDead}
-            </div>
+            <div className={cx('card-yearsLife')}>{yearsLife}</div>
           </div>
         </div>
         <div className={cx('card-curtain')}>

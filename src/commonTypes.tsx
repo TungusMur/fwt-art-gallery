@@ -4,6 +4,5 @@ export type ICommonCard = {
   name: string;
   img: string;
   handleClick?: () => void;
-  yearBirth?: number;
-  yearDead?: number;
+  yearsLife?: string;
 };

@@ -17,6 +17,5 @@ Primary.args = {
   handleClick: () => {
     console.log('click');
   },
-  yearBirth: 1732,
-  yearDead: 1806,
+  yearsLife: `${1732} - ${1806}`,
 };

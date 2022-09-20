@@ -22,8 +22,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 2,
@@ -33,8 +32,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 3,
@@ -44,8 +42,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 4,
@@ -55,8 +52,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 5,
@@ -66,8 +62,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 6,
@@ -77,8 +72,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 7,
@@ -88,8 +82,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
     {
       id: 8,
@@ -99,8 +92,7 @@ Primary.args = {
       handleClick: () => {
         console.log('click');
       },
-      yearBirth: 1732,
-      yearDead: 1806,
+      yearsLife: `${1732} - ${1806}`,
     },
   ],
 };

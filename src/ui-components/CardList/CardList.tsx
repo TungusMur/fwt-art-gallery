@@ -18,20 +18,17 @@ const CardList = ({ cardsData, theme = 'light' }: ICardsData) => {
 
   return (
     <div className={cx('cardList')}>
-      {cardsData.map(
-        ({ id, name, handleClick, title, img, yearBirth, yearDead }) => (
-          <div className={cx('cardList-item')} key={id}>
-            <Card
-              name={name}
-              handleClick={handleClick}
-              title={title}
-              img={img}
-              yearBirth={yearBirth}
-              yearDead={yearDead}
-            />
-          </div>
-        )
-      )}
+      {cardsData.map(({ id, name, handleClick, title, img, yearsLife }) => (
+        <div className={cx('cardList-item')} key={id}>
+          <Card
+            name={name}
+            handleClick={handleClick}
+            title={title}
+            img={img}
+            yearsLife={yearsLife}
+          />
+        </div>
+      ))}
     </div>
   );
 };
