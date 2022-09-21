@@ -1,17 +1,28 @@
-name: CI                            // имя потока 
+name: CI
 on:
-branch
+  push: 
+    branches: [ main, artistCard ]
   pull_request:
-    branches: [ master ]      // на эту ветку вешаем наблюдатель за pull request
-jobs:	                // группировка работ, которые должны быть сделаны
-  build:              // имя первой работы
+    branches: [ main ]
+jobs:
+  build:
     runs-on: ubuntu-latest
-    steps:                		 // шаги в каждой работе
-      - uses: actions/checkout@v2
-      
-      - name: npm install        // имя шага, желательно понятное
-        run: npm i		// какая команда запускается на сервере
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
 
-      - name: Deploy to gh-pages
-        run: git remote set-url origin https://git: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@github.com/fwt-art-gallery.git
-             npm run deploy
+      - name: Install 🔧
+        run: npm install
+
+      - name: Build 👷
+        run: npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
