@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import DesktopImg from '../assets/img/card/Desktop.png';
-import Card from '../ui-components/Card/Card';
+import Card from '../ui-components/Card';
 
 export default {
   titel: 'Card',
