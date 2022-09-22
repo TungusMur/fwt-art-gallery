@@ -6,7 +6,7 @@
 }
 
 .header-form {
-  width: 87.5%;
+  width: var(--grid-width);
   height: 64px;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@
     position: relative;
     width: inherit;
     height: 2px;
-    background: #000;
+    background: #575757;
     border-radius: 10px;
     transform: none;
   }
@@ -59,6 +59,10 @@
       transform: rotate(-40deg);
     }
   }
+
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
 }
 
 .header-action {
@@ -79,14 +83,32 @@
     flex-direction: column;
     gap: 40px;
     margin-left: 47px;
+
+    @media screen and (min-width: 321px) {
+      margin-left: 20.17%;
+    }
+
+    @media screen and (min-width: 769px) {
+      margin: 0;
+      flex-direction: row-reverse;
+      gap: 60px;
+    }
   }
 
   &_active {
     right: 0;
   }
 
+  @media screen and (min-width: 321px) {
+    width: 60.67%;
+  }
+
   @media screen and (min-width: 769px) {
     display: inline;
+    position: initial;
+    height: auto;
+    width: auto;
+    background: none;
   }
 }
 
@@ -94,17 +116,34 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  @media screen and (min-width: 769px) {
+    &__btn-text {
+      display: none;
+    }
+  }
 }
 
 .header-entrance {
-  .header-theme {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
   &__logIn,
   &__signUp {
     color: #575757;
+
+    @media screen and (min-width: 769px) {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
   }
 }
 
@@ -121,5 +160,9 @@
     height: 100vh;
     background: rgba(3, 3, 3, 0.3);
     transition-delay: 0s, 0s;
+  }
+
+  @media screen and (min-width: 769px) {
+    display: none;
   }
 }
