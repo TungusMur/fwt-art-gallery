@@ -10,6 +10,7 @@ type ITextarea = {
   isError?: boolean;
   textError: string;
   theme?: 'light' | 'dark';
+  args?: HTMLTextAreaElement;
 };
 
 const Textarea = ({
@@ -18,6 +19,7 @@ const Textarea = ({
   isError = false,
   textError,
   theme = 'light',
+  ...args
 }: ITextarea) => (
   <div className={cx('textarea', 'input')}>
     <div className={cx('textarea__title', `textarea__title_theme_${theme}`)}>

@@ -10,6 +10,7 @@ type IInput = {
   isError?: boolean;
   textError: string;
   theme?: 'light' | 'dark';
+  args?: HTMLInputElement;
 };
 
 const Input = ({
@@ -18,6 +19,7 @@ const Input = ({
   isError = false,
   textError,
   theme = 'light',
+  ...args
 }: IInput) => (
   <div className={cx('input')}>
     <div className={cx('input__title', `input__title_theme_${theme}`)}>
