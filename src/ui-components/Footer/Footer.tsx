@@ -6,10 +6,19 @@ import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
-const Footer = () => (
-  <div className={cx('footer')}>
+type IFooter = {
+  theme?: 'light' | 'dark';
+};
+
+const Footer = ({ theme = 'light' }: IFooter) => (
+  <div className={cx('footer', `footer_theme_${theme}`)}>
     <div className={cx('footer-form')}>
-      <div className={cx('footer-form__content')}>
+      <div
+        className={cx(
+          'footer-form__content',
+          `footer-form__content_theme_${theme}`
+        )}
+      >
         <div
           className={cx(
             'footer__title',
@@ -34,9 +43,24 @@ const Footer = () => (
         </div>
       </div>
       <div className={cx('footer-socialNetworks')}>
-        <Facebook />
-        <Vk />
-        <Instagram />
+        <Facebook
+          className={cx(
+            'footer-socialNetworks__facebook',
+            `footer-socialNetworks__facebook_theme_${theme}`
+          )}
+        />
+        <Vk
+          className={cx(
+            'footer-socialNetworks__vk',
+            `footer-socialNetworks__vk_theme_${theme}`
+          )}
+        />
+        <Instagram
+          className={cx(
+            'footer-socialNetworks__instagram',
+            `footer-socialNetworks__instagram_theme_${theme}`
+          )}
+        />
       </div>
     </div>
   </div>

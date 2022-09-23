@@ -3,11 +3,36 @@
   position: fixed;
   display: flex;
   justify-content: center;
+  z-index: 3;
+
+  &__logo {
+    &_theme {
+      &_light * {
+        fill: #575757;
+      }
+
+      &_dark * {
+        fill: #dedede;
+      }
+    }
+  }
+
+  &_theme {
+    &_light {
+      background: #ffffff;
+      color: #575757;
+    }
+
+    &_dark {
+      background: #121212;
+      color: #dedede;
+    }
+  }
 }
 
 .header-form {
   width: var(--grid-width);
-  height: 64px;
+  height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +48,16 @@
   align-items: center;
   z-index: 2;
 
+  &_theme {
+    &_light {
+      color: #575757;
+    }
+
+    &_dark {
+      color: #dedede;
+    }
+  }
+
   &__line,
   &::before,
   &::after {
@@ -31,7 +66,7 @@
     position: relative;
     width: inherit;
     height: 2px;
-    background: #575757;
+    background: currentColor;
     border-radius: 10px;
     transform: none;
   }
@@ -68,7 +103,6 @@
 .header-action {
   display: flex;
   position: fixed;
-  background: #fcfcfc;
   top: 0;
   right: -100%;
   height: 100vh;
@@ -77,6 +111,16 @@
   justify-content: center;
   transition: right 0.4s;
   z-index: 1;
+
+  &_theme {
+    &_light {
+      background: #fcfcfc;
+    }
+
+    &_dark {
+      background: #121212;
+    }
+  }
 
   &__content {
     display: flex;
@@ -116,6 +160,12 @@
   display: flex;
   align-items: center;
   gap: 12px;
+
+  &__btn-theme__titel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   @media screen and (min-width: 769px) {
     &__btn-text {
       display: none;
@@ -129,10 +179,18 @@
   align-items: flex-start;
   gap: 32px;
 
+  &_theme {
+    &_light {
+      color: #575757;
+    }
+
+    &_dark {
+      color: #dedede;
+    }
+  }
+
   &__logIn,
   &__signUp {
-    color: #575757;
-
     @media screen and (min-width: 769px) {
       font-weight: 700;
       font-size: 16px;

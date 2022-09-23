@@ -2,6 +2,7 @@ html {
   --primary-width: 1440px;
   --grid-width: 1240px;
   --header-height: 80px;
+  --footer-height: 166px; 
 
   @media screen and (max-width: 1440px) {
     --grid-width: 86.11%;
@@ -15,7 +16,6 @@ html {
     --primary-width: 768px;
     --grid-width: 94.79%;
     --header-height: 88px;
-    --footer-height: 166px;
   }
 
   @media screen and (max-width: 320px) {
