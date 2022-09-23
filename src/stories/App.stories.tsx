@@ -9,4 +9,10 @@ export default {
 const Template: ComponentStory<typeof App> = () => <App />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  title: 'Field name',
+  placeholder: 'Placeholder',
+  isError: false,
+  textError: 'This is an error message!',
+  theme: 'light',
+};

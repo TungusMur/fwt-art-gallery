@@ -1,10 +1,10 @@
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import { ReactComponent as Error } from '../../assets/img/errorIcon.svg';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
-type IInput = {
+type ITextarea = {
   title: string;
   placeholder: string;
   isError?: boolean;
@@ -12,35 +12,35 @@ type IInput = {
   theme?: 'light' | 'dark';
 };
 
-const Input = ({
+const Textarea = ({
   title,
   placeholder,
   isError = false,
   textError,
   theme = 'light',
-}: IInput) => (
-  <div className={cx('input')}>
-    <div className={cx('input__title', `input__title_theme_${theme}`)}>
+}: ITextarea) => (
+  <div className={cx('textarea', 'input')}>
+    <div className={cx('textarea__title', `textarea__title_theme_${theme}`)}>
       {title}
     </div>
-    <input
+    <textarea
       className={cx(
-        'input__input',
-        `input__input_theme_${theme}`,
+        'textarea__textarea',
+        `textarea__textarea_theme_${theme}`,
         'paragraph_light',
         'paragraph_light_base',
         {
-          input__input_isError: isError,
+          textarea__textarea_isError: isError,
         }
       )}
       placeholder={placeholder}
     />
     {isError && (
-      <div className={cx('input-error')}>
-        <Error className={cx('input-error__icon')} />
+      <div className={cx('textarea-error')}>
+        <Error className={cx('textarea-error__icon')} />
         <div
           className={cx(
-            'input-error__info',
+            'textarea-error__info',
             'paragraph_light',
             'paragraph_light_base'
           )}
@@ -52,4 +52,4 @@ const Input = ({
   </div>
 );
 
-export default Input;
+export default Textarea;
