@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import App from '../components/App/App';
+import App from '../components/App';
 
 export default {
   titel: 'app',
