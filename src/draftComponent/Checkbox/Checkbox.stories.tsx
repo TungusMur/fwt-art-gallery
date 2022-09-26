@@ -6,6 +6,12 @@ export default {
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = () => <Checkbox />;
+const Template: ComponentStory<typeof Checkbox> = (args) => (
+  <Checkbox {...args} />
+);
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  handleSelected: () => {
+    console.log('+');
+  },
+};
