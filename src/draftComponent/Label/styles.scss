@@ -1,0 +1,13 @@
+.label {
+  padding: 8px 16px;
+  width: max-content;
+  background: rgba(18, 18, 18, 0.05);
+  border-radius: 30px;
+  color: #575757;
+
+  &__title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+  }
+}
