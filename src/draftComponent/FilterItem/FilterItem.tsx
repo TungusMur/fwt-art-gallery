@@ -3,6 +3,26 @@ import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
-const FilterItem = () => <div className={cx('filterItem')}></div>;
+type IFilterItem = {
+  title: string;
+  isSelected: boolean;
+  theme?: 'light' | 'dark';
+};
+
+const FilterItem = ({ title, isSelected, theme = 'light' }: IFilterItem) => (
+  <div
+    className={cx(
+      'filterItem',
+      `filterItem_theme_${theme}`,
+      'paragraph_light',
+      'paragraph_light_small',
+      {
+        filterItem_isSelected: isSelected,
+      }
+    )}
+  >
+    {title}
+  </div>
+);
 
 export default FilterItem;

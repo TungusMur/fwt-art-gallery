@@ -6,7 +6,12 @@ export default {
   component: FilterItem,
 } as ComponentMeta<typeof FilterItem>;
 
-const Template: ComponentStory<typeof FilterItem> = (...args) => <FilterItem />;
+const Template: ComponentStory<typeof FilterItem> = (args) => (
+  <FilterItem {...args} />
+);
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  title: 'Filter item',
+  isSelected: false,
+};
