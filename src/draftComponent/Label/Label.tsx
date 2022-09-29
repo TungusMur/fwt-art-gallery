@@ -1,4 +1,6 @@
+import React from 'react';
 import classNames from 'classnames';
+import { ReactComponent as CrossIcon } from '../../assets/img/crossIcon.svg';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -26,8 +28,12 @@ const Label = ({
     >
       {title}
     </div>
-    {isClose && <button className={cx('label__btn')} onClick={handleClose} />}
+    {isClose && (
+      <button className={cx('label__btn')} onClick={handleClose}>
+        <CrossIcon className={cx('label__cross-icon')} />
+      </button>
+    )}
   </div>
 );
 
-export default Label;
+export default React.memo(Label);

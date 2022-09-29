@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
 
   &_theme {
     &_light {
@@ -15,7 +16,7 @@
     &_dark {
       color: #dedede;
       background: rgba(205, 205, 205, 0.05);
-      outline: 1px solid #ffffff;
+      border: 1px solid #ffffff;
     }
   }
 
@@ -33,23 +34,9 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
 
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      width: 11px;
-      height: 1px;
-      background: currentColor;
-      border-radius: 20px;
-    }
-
-    &::before {
-      transform: rotateZ(45deg);
-    }
-
-    &::after {
-      transform: rotateZ(-45deg);
-    }
+  &__cross-icon * {
+    fill: currentColor;
   }
 }

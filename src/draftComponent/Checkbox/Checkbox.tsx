@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames';
 import styles from './styles.scss';
 
@@ -6,20 +7,21 @@ const cx = classNames.bind(styles);
 type ICheckbox = {
   theme?: 'light' | 'dark';
   isSelected?: boolean;
-  handleSelected?: () => void;
+  handleChange: () => void;
 };
 
 const Checkbox = ({
   theme = 'light',
   isSelected = false,
-  handleSelected,
+  handleChange,
 }: ICheckbox) => (
   <input
     type="checkbox"
     id="checkbox"
-    // checked={isSelected}
+    checked={isSelected}
     className={cx('checkbox', `checkbox_theme_${theme}`)}
+    onChange={handleChange}
   />
 );
 
-export default Checkbox;
+export default React.memo(Checkbox);

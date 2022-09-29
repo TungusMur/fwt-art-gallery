@@ -90,7 +90,7 @@ h6 {
 
 .input {
   font-family: 'Inter Bold';
-  font-size: 12;
+  font-size: 12px;
 }
 
 .paragraph {
@@ -116,9 +116,9 @@ h6 {
     &_small {
       font-size: 12px;
 
-      @media screen and (max-width: 768px) {
-        font-size: 8px;
-      }
+      // @media screen and (max-width: 768px) {
+      //   font-size: 8px;
+      // }
     }
 
     &_tiny {

@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './styles.scss';
 
@@ -25,4 +26,4 @@ const FilterItem = ({ title, isSelected, theme = 'light' }: IFilterItem) => (
   </div>
 );
 
-export default FilterItem;
+export default React.memo(FilterItem);

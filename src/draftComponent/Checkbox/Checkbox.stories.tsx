@@ -11,7 +11,5 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 );
 export const Primary = Template.bind({});
 Primary.args = {
-  handleSelected: () => {
-    console.log('+');
-  },
+  handleChange: () => {},
 };
