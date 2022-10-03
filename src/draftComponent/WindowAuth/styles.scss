@@ -1,0 +1,195 @@
+.windowAuth {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_theme {
+    &_light {
+      background: rgba(3, 3, 3, 0.3);
+    }
+
+    &_dark {
+      background: rgba(3, 3, 3, 0.6);
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+
+    @media screen and (min-width: 1028px) {
+      width: auto;
+      min-width: 1028px;
+      max-height: 700px;
+      position: absolute;
+    }
+  }
+}
+
+.windowAuth-image {
+  display: none;
+  width: 498px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  @media screen and (min-width: 1028px) {
+    display: flex;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}
+
+.windowAuth-form {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &_theme {
+    &_light {
+      background: #fcfcfc;
+    }
+
+    &_dark {
+      background: #121212;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: 426px) {
+      gap: 60px;
+    }
+  }
+
+  @media screen and (min-width: 1028px) {
+    width: calc(100% - 498px);
+  }
+}
+
+.windowAuth-close {
+  top: 24px;
+  right: 24px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+
+  &_theme {
+    &_light {
+      color: #575757;
+    }
+
+    &_dark {
+      color: #dedede;
+    }
+  }
+
+  &::before,
+  &::after {
+    width: 22.6px;
+    height: 1px;
+    content: '';
+    background: currentColor;
+    position: absolute;
+    border-radius: 4px;
+  }
+
+  &::before {
+    transform: rotateZ(-45deg);
+  }
+
+  &::after {
+    transform: rotateZ(45deg);
+  }
+}
+
+.windowAuth-text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  &_theme {
+    &_light {
+      color: #575757;
+    }
+
+    &_dark {
+      color: #ffffff;
+    }
+  }
+
+  &__title {
+    @media screen and (min-width: 426px) {
+      font-size: 60px;
+      line-height: 73px;
+    }
+
+    @media screen and (min-width: 1028px) {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__info {
+    font-family: 'Inter Light';
+    font-size: 12px;
+    line-height: 17px;
+    position: absolute;
+    bottom: 32px;
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: center;
+    gap: 3px;
+
+    @media screen and (min-width: 426px) {
+      font-size: 16px;
+      line-height: 22px;
+      position: initial;
+    }
+  }
+
+  @media screen and (min-width: 426px) {
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 1028px) {
+    gap: 20px;
+  }
+}
+
+.windowAuth-signUp {
+  text-transform: initial;
+  font-size: initial;
+  line-height: initial;
+}
+
+.windowAuth-action {
+  width: 260px;
+  margin: 60px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media screen and (min-width: 426px) {
+    width: 340px;
+    margin: 0px;
+  }
+}
