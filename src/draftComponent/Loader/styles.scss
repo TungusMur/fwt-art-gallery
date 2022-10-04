@@ -1,0 +1,77 @@
+@mixin keyframesCircle($number) {
+  @keyframes circle#{$number} {
+    0% {
+      stroke-dasharray: 0, 156;
+      transform: rotate(0deg);
+    }
+
+    50% {
+      stroke-dasharray: 75 + 15 * ($number - 1), 156 - 10;
+      transform: rotate(180deg);
+    }
+
+    80% {
+      stroke-dasharray: 75 + 15 * ($number - 1), 156 + 80 - 15 * ($number - 1);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@for $i from 1 through 4 {
+  @include keyframesCircle($i);
+}
+
+.loader {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateZ(90deg);
+
+  &_theme {
+    &_light {
+      color: #121212;
+    }
+
+    &_dark {
+      color: #dedede;
+    }
+  }
+
+  &__ellipse {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    fill: none;
+    left: 25%;
+    top: 25%;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke: currentColor;
+    stroke-dasharray: 156px;
+    stroke-dashoffset: 156px;
+
+    @mixin numberCircle($number) {
+      &_number#{$number} {
+        z-index: $number;
+        opacity: 0.35;
+        animation: circle#{$number} 2s linear infinite;
+      }
+    }
+
+    @for $i from 1 through 3 {
+      @include numberCircle($i);
+    }
+
+    &_number4 {
+      z-index: 4;
+      opacity: 0.8;
+      animation: circle4 2s linear infinite;
+    }
+  }
+}

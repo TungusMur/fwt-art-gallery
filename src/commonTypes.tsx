@@ -1,5 +1,5 @@
 export type ICommonCard = {
-  id?: number;
+  id?: number | string;
   title: string;
   name: string;
   img: string;
