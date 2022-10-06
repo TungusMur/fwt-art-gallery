@@ -1,25 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ICommonCard } from '../../../commonTypes';
+import { getAuthorsData } from '../../api';
 
 const initialState: { data: any[]; loading: boolean } = {
   data: [],
   loading: true,
 };
 
+const fetchDataAftors = createAsyncThunk('authors/fetchDataAftors', () => {
+  return getAuthorsData().then((data) => data);
+});
+
 const authorsReducer = createSlice({
-  name: 'authorsReducer',
+  name: 'authors',
   initialState,
-  reducers: {
-    getData: (state, { payload }) => ({
-      ...state,
-      data: [...payload.data],
-      loading: false,
-    }),
-    loading: (state) => ({ ...state, loading: true }),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchDataAftors.fulfilled, (state, { payload }) => ({
+        ...state,
+        data: [...payload.data],
+        loading: false,
+      }))
+      .addCase(fetchDataAftors.pending, (state) => ({
+        ...state,
+        data: [],
+        loading: true,
+      }));
   },
 });
 
-const { actions, reducer } = authorsReducer;
+const { reducer } = authorsReducer;
 
-export const { getData, loading } = actions;
+export { fetchDataAftors };
 export default reducer;
