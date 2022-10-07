@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import getStageData from './stagesData';
 import { ReactComponent as ActionIcon } from '../../assets/img/prevIcon.svg';
@@ -13,10 +13,10 @@ type IPagination = {
 
 const Pagination = ({ countStage, theme = 'light' }: IPagination) => {
   const [stage, setStage] = useState(0);
-
-  useEffect(() => {
-    console.log(stage);
-  }, [stage]);
+  const dataStage = useMemo(
+    () => getStageData(countStage, stage, (e) => setStage(e)),
+    [stage]
+  );
 
   return (
     <div className={cx('pagination', `pagination_theme_${theme}`)}>
@@ -35,22 +35,20 @@ const Pagination = ({ countStage, theme = 'light' }: IPagination) => {
         />
       </button>
       <div className={cx('pagination-form')}>
-        {getStageData(countStage, stage, (e) => setStage(e)).map(
-          ({ title, id, handleClickItem }) => (
-            <button
-              key={id}
-              className={cx(
-                'pagination__btn',
-                'pagination-form__btn-stage',
-                `pagination-form__btn-stage_theme_${theme}`,
-                { 'pagination-form__btn-stage_active': id === stage }
-              )}
-              onClick={handleClickItem}
-            >
-              {title}
-            </button>
-          )
-        )}
+        {dataStage.map(({ title, id, handleClickItem }) => (
+          <button
+            key={id}
+            className={cx(
+              'pagination__btn',
+              'pagination-form__btn-stage',
+              `pagination-form__btn-stage_theme_${theme}`,
+              { 'pagination-form__btn-stage_active': id === stage }
+            )}
+            onClick={handleClickItem}
+          >
+            {title}
+          </button>
+        ))}
       </div>
       <button
         className={cx(
