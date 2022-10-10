@@ -29,29 +29,33 @@ const Description = ({ description, theme = 'light' }: IDescription) => {
           { 'authorPage-description__title_active': stateReadMore }
         )}
       >
-        {description.slice(0, stateReadMore ? description.length : 265)}
+        {description.length > 265
+          ? description.slice(0, stateReadMore ? description.length : 265)
+          : description}
       </div>
-      <Button
-        className={cx('btn-text', 'authorPage-readMoreBtn')}
-        isFalled
-        theme={theme}
-      >
-        <div
-          className={cx('authorPage-readMoreBtn__content')}
-          onClick={() => {
-            setStateReadMore((state) => !state);
-          }}
+      {description.length > 265 && (
+        <Button
+          className={cx('btn-text', 'authorPage-readMoreBtn')}
+          isFalled
+          theme={theme}
         >
-          <div className={cx('authorPage-readMoreBtn__title')}>
-            read {stateReadMore ? 'less' : 'more'}
+          <div
+            className={cx('authorPage-readMoreBtn__content')}
+            onClick={() => {
+              setStateReadMore((state) => !state);
+            }}
+          >
+            <div className={cx('authorPage-readMoreBtn__title')}>
+              read {stateReadMore ? 'less' : 'more'}
+            </div>
+            <VectorIcon
+              className={cx('authorPage-readMoreBtn__icon', {
+                'authorPage-readMoreBtn__icon_active': stateReadMore,
+              })}
+            />
           </div>
-          <VectorIcon
-            className={cx('authorPage-readMoreBtn__icon', {
-              'authorPage-readMoreBtn__icon_active': stateReadMore,
-            })}
-          />
-        </div>
-      </Button>
+        </Button>
+      )}
     </div>
   );
 };
