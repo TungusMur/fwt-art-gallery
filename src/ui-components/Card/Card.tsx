@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { ICommonCard } from '../../commonTypes';
+import { ICommonCard, ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
 type ICard = ICommonCard & {
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
 };
 
 const Card = ({

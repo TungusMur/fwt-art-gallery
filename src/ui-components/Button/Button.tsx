@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import { ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -7,7 +8,7 @@ const cx = classNames.bind(styles);
 type IButton = {
   children: ReactNode;
   className?: string;
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
   isFalled?: boolean;
   isOutlined?: boolean;
   isDisabled?: boolean;

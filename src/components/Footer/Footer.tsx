@@ -2,12 +2,13 @@ import classNames from 'classnames/bind';
 import { ReactComponent as Vk } from '../../assets/img/vk.svg';
 import { ReactComponent as Instagram } from '../../assets/img/instagram.svg';
 import { ReactComponent as Facebook } from '../../assets/img/facebook.svg';
+import { ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
 type IFooter = {
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
 };
 
 const Footer = ({ theme = 'light' }: IFooter) => (

@@ -7,4 +7,4 @@ export type ICommonCard = {
   yearsLife?: string;
 };
 
-export type Themes = 'light' | 'dark';
+export type ITheme = 'light' | 'dark';
