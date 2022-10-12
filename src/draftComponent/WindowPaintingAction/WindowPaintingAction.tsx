@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
-import useDragAndDrop from './useDragAndDrop';
+import useDrag from './useDragAndDrop';
 import Button from '../../ui-components/Button';
 import Input from '../Input';
 import { ReactComponent as DropIcon } from '../../assets/img/dropIcon.svg';
@@ -16,7 +16,7 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
   const [fileData, setFileData] = useState<string | ArrayBuffer | null>(null);
   const uploadRef = useRef<HTMLDivElement>(null);
 
-  useDragAndDrop(
+  useDrag(
     'windowPaintingAction-upload__content',
     (e) => setDragState(e),
     uploadRef,
@@ -61,14 +61,16 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
         >
           <div
             className={cx('windowPaintingAction-upload__content')}
-            onDrop={(e: React.DragEvent<HTMLDivElement>) => {
+            onDrop={(e) => {
               e.preventDefault();
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                setFileData(reader.result);
-                setDragState(false);
-              };
-              reader.readAsDataURL(e.dataTransfer.files[0]);
+              if (e.dataTransfer.files[0]) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                  setFileData(reader.result);
+                  setDragState(false);
+                };
+                reader.readAsDataURL(e.dataTransfer.files[0]);
+              }
             }}
             ref={uploadRef}
           >
@@ -94,6 +96,7 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
                       className={cx('windowPaintingAction-upload__input')}
                       type="file"
                       onChange={(e) => {
+                        e.preventDefault();
                         if (e.target.files) {
                           const reader = new FileReader();
                           reader.onloadend = () => {

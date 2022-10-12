@@ -1,38 +1,27 @@
 import { useEffect } from 'react';
 
-type IDragAndDrop = (
+type IDrag = (
   className: string,
   setDragState: (e: boolean) => void,
   ref: React.RefObject<HTMLDivElement>,
   dragState: boolean
 ) => void;
 
-const useDragAndDrop: IDragAndDrop = (
-  className,
-  setDragState,
-  ref,
-  dragState
-) => {
+const useDrag: IDrag = (className, setDragState, ref, dragState) => {
   const handleDrag = (e: DragEvent, typeDrag?: string) => {
     e.preventDefault();
 
     if (typeDrag === 'enter' && ref.current === e.target && !dragState) {
-      console.log('enter');
-      console.log(dragState);
       setDragState(true);
-    }
-
-    if (
+    } else if (
       typeDrag === 'leave' &&
       !ref.current?.contains(e.relatedTarget as HTMLElement)
     ) {
-      // if (!ref.current?.contains(e.target as HTMLElement)) {
       setDragState(false);
-      // }
     }
   };
 
-  const createOrRemoveEvent = (
+  const createOrRemoveDragEvent = (
     typeMethod: string,
     typeEvent: string,
     typeDrag?: string
@@ -53,18 +42,18 @@ const useDragAndDrop: IDragAndDrop = (
   };
 
   useEffect(() => {
-    createOrRemoveEvent('add', 'dragstart');
-    createOrRemoveEvent('add', 'dragenter', 'enter');
-    createOrRemoveEvent('add', 'dragleave', 'leave');
-    createOrRemoveEvent('add', 'dragover');
+    createOrRemoveDragEvent('add', 'dragstart');
+    createOrRemoveDragEvent('add', 'dragenter', 'enter');
+    createOrRemoveDragEvent('add', 'dragleave', 'leave');
+    createOrRemoveDragEvent('add', 'dragover');
 
     return () => {
-      createOrRemoveEvent('remove', 'dragstart');
-      createOrRemoveEvent('remove', 'dragenter', 'enter');
-      createOrRemoveEvent('remove', 'dragleave', 'leave');
-      createOrRemoveEvent('remove', 'dragover');
+      createOrRemoveDragEvent('remove', 'dragstart');
+      createOrRemoveDragEvent('remove', 'dragenter', 'enter');
+      createOrRemoveDragEvent('remove', 'dragleave', 'leave');
+      createOrRemoveDragEvent('remove', 'dragover');
     };
   }, [ref]);
 };
 
-export default useDragAndDrop;
+export default useDrag;
