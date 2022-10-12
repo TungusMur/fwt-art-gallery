@@ -29,10 +29,8 @@ const Card = ({
       />
       <div className={cx('card-content')}>
         <div className={cx('card-description')}>
-          <div className={cx('card-title')}>
-            <h4>{title}</h4>
-          </div>
-          <div className={cx('paragraph_medium', 'paragraph_medium_small')}>
+          <h4 className={cx('card-title')}>{title}</h4>
+          <div className={cx('paragraph__small_medium')}>
             <div className={cx('card-yearsLife')}>{yearsLife}</div>
           </div>
         </div>

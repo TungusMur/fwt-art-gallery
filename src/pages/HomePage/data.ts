@@ -9,7 +9,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
   {
     id: 8,
@@ -79,6 +79,6 @@ export default [
     handleClick: () => {
       console.log('click');
     },
-    yearsLife: `${1732} - ${1806}`,
+    yearsLife: '1732 - 1806',
   },
 ];

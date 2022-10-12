@@ -19,26 +19,14 @@ const Footer = ({ theme = 'light' }: IFooter) => (
           `footer-form__content_theme_${theme}`
         )}
       >
-        <div
-          className={cx(
-            'footer__title',
-            'paragraph_light',
-            'paragraph_light_small'
-          )}
-        >
+        <div className={cx('footer__title', 'paragraph__small_light')}>
           Проект реализован в рамках стажировки для Frontend-разработчиков от
           компании{' '}
           <a className={cx('footer__link')} href="https://framework.team/">
             Framework Team
           </a>
         </div>
-        <div
-          className={cx(
-            'footer__signature',
-            'paragraph_light',
-            'paragraph_light_small'
-          )}
-        >
+        <div className={cx('footer__signature', 'paragraph__small_light')}>
           Муравьев Владимир, 2022
         </div>
       </div>

@@ -61,7 +61,7 @@ h4 {
   font-size: 16px;
   line-height: 19px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     font-size: 12px;
   }
 }
@@ -93,41 +93,6 @@ h6 {
   font-size: 12;
 }
 
-.paragraph {
-  &_light {
-    &_base {
-      font-family: 'Inter Light';
-      font-size: 16px;
-    }
-
-    &_small {
-      font-family: 'Inter Light';
-      font-size: 12px;
-    }
-  }
-
-  &_medium {
-    font-family: 'Inter Medium';
-    font-weight: 700;
-
-    &_base {
-      font-size: 16px;
-    }
-
-    &_small {
-      font-size: 12px;
-
-      @media screen and (max-width: 768px) {
-        font-size: 8px;
-      }
-    }
-
-    &_tiny {
-      font-size: 8px;
-    }
-  }
-}
-
 .caption {
   &_bold {
     font-family: 'Inter Medium';
@@ -135,5 +100,40 @@ h6 {
 
   &_medium {
     font-family: 'Inter Bold';
+  }
+}
+
+.paragraph {
+  @mixin commonStyle($family, $size, $height, $weight) {
+    font-family: $family;
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+  }
+
+  &__base {
+    &_light {
+      @include commonStyle('Inter Light', 16px, 140%, 300);
+    }
+
+    &_medium {
+      @include commonStyle('Inter Medium', 16px, 140%, 500);
+    }
+  }
+
+  &__small {
+    &_light {
+      @include commonStyle('Inter Light', 12px, 140%, 300);
+    }
+
+    &_medium {
+      @include commonStyle('Inter Medium', 12px, 140%, 500);
+    }
+  }
+
+  &__tiny {
+    &_medium {
+      @include commonStyle('Inter Medium', 8px, 10px, 500);
+    }
   }
 }

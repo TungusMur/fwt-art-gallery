@@ -6,3 +6,5 @@ export type ICommonCard = {
   handleClick?: () => void;
   yearsLife?: string;
 };
+
+export type Themes = 'light' | 'dark';

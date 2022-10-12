@@ -3,8 +3,8 @@ import classNames from 'classnames/bind';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 import { ReactComponent as DarkTheme } from '../../assets/img/darkTheme.svg';
 import { ReactComponent as LightTheme } from '../../assets/img/lightTheme.svg';
-import Button from '../Button';
-import ThemeContext from '../../Context/Context';
+import Button from '../../ui-components/Button';
+import ThemeContext from '../../utils/context/context';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -27,12 +27,7 @@ const Header = () => {
             setActiveBurger((state) => !state);
           }}
         >
-          <div
-            className={cx(
-              'header-burger__line'
-              // `header-burger__line_theme_${theme}`
-            )}
-          ></div>
+          <div className={cx('header-burger__line')}></div>
         </button>
         <div
           className={cx('header-action', `header-action_theme_${theme}`, {
