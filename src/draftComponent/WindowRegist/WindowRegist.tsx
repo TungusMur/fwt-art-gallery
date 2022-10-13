@@ -14,11 +14,7 @@ const WindowRegist = ({ theme = 'light' }: IWindowRegist) => (
   <div className={cx('windowRegist', `windowRegist_theme_${theme}`)}>
     <div className={cx('windowRegist__content')}>
       <div className={cx('windowRegist-image')}>
-        <img
-          className={cx('windowRegist-image__img')}
-          src={Image}
-          alt="image"
-        />
+        <img className={cx('windowRegist-image__img')} src={Image} alt="art" />
       </div>
       <div
         className={cx('windowRegist-form', `windowRegist-form_theme_${theme}`)}

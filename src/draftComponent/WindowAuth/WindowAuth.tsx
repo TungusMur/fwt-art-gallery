@@ -14,7 +14,7 @@ const WindowAuth = ({ theme = 'light' }: IWindowAuth) => (
   <div className={cx('windowAuth', `windowAuth_theme_${theme}`)}>
     <div className={cx('windowAuth__content')}>
       <div className={cx('windowAuth-image')}>
-        <img className={cx('windowAuth-image__img')} src={Image} alt="image" />
+        <img className={cx('windowAuth-image__img')} src={Image} alt="art" />
       </div>
       <div className={cx('windowAuth-form', `windowAuth-form_theme_${theme}`)}>
         <button

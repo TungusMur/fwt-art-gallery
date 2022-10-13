@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import classNames from 'classnames/bind';
-import useDrag from './useDragAndDrop';
 import Button from '../../ui-components/Button';
 import Input from '../Input';
 import { ReactComponent as DropIcon } from '../../assets/img/dropIcon.svg';
 import Image from './Image';
+import { handleDrag, handleDropOrInput } from './function';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -15,13 +15,6 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
   const [dragState, setDragState] = useState(false);
   const [fileData, setFileData] = useState<string | ArrayBuffer | null>(null);
   const uploadRef = useRef<HTMLDivElement>(null);
-
-  useDrag(
-    'windowPaintingAction-upload__content',
-    (e) => setDragState(e),
-    uploadRef,
-    dragState
-  );
 
   return (
     <div className={cx('windowPaintingAction')}>
@@ -61,17 +54,21 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
         >
           <div
             className={cx('windowPaintingAction-upload__content')}
-            onDrop={(e) => {
-              e.preventDefault();
-              if (e.dataTransfer.files[0]) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                  setFileData(reader.result);
-                  setDragState(false);
-                };
-                reader.readAsDataURL(e.dataTransfer.files[0]);
-              }
-            }}
+            onDragStart={(e) => handleDrag(e)}
+            onDragEnter={(e) =>
+              handleDrag(e, uploadRef, 'enter', (state) => setDragState(state))
+            }
+            onDragLeave={(e) =>
+              handleDrag(e, uploadRef, 'leave', (state) => setDragState(state))
+            }
+            onDragOver={(e) => handleDrag(e)}
+            onDrop={(e) =>
+              handleDropOrInput(
+                e,
+                (file) => setFileData(file),
+                (state) => setDragState(state)
+              )
+            }
             ref={uploadRef}
           >
             {!fileData && (
@@ -95,16 +92,13 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
                     <input
                       className={cx('windowPaintingAction-upload__input')}
                       type="file"
-                      onChange={(e) => {
-                        e.preventDefault();
-                        if (e.target.files) {
-                          const reader = new FileReader();
-                          reader.onloadend = () => {
-                            setFileData(reader.result);
-                          };
-                          reader.readAsDataURL(e.target.files[0]);
-                        }
-                      }}
+                      onChange={(e) =>
+                        handleDropOrInput(
+                          e,
+                          (file) => setFileData(file),
+                          (state) => setDragState(state)
+                        )
+                      }
                     />
                     <span className={cx('windowPaintingAction-upload__span')} />
                   </label>
@@ -146,7 +140,12 @@ const WindowPaintingAction = ({ theme = 'light' }: IWindowPaintingAction) => {
             save
           </div>
         </Button>
-        <button className={cx('windowPaintingAction__btnClose')} />
+        <button
+          className={cx(
+            'windowPaintingAction__btnClose',
+            `windowPaintingAction__btnClose_theme_${theme}`
+          )}
+        />
       </div>
     </div>
   );

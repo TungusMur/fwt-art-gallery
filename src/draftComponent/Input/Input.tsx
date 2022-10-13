@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames';
 import { ReactComponent as Error } from '../../assets/img/errorIcon.svg';
 import styles from './styles.scss';
@@ -54,4 +55,4 @@ const Input = ({
   </div>
 );
 
-export default Input;
+export default React.memo(Input);
