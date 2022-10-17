@@ -1,0 +1,47 @@
+.image {
+  position: relative;
+  width: 400px;
+  height: 300px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -150px;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      #5757575e 50%,
+      transparent 100%
+    );
+    animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+    @keyframes load {
+      from {
+        left: -150px;
+      }
+      to {
+        left: 100%;
+      }
+    }
+  }
+
+  &_isLoaded {
+    &::before {
+      animation: none;
+    }
+  }
+
+  &__img {
+    max-height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &_isLoaded {
+      opacity: 1;
+    }
+  }
+}

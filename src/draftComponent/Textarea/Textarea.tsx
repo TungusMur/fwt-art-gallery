@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames/bind';
 import { ReactComponent as Error } from '../../assets/img/errorIcon.svg';
 import styles from './styles.scss';
@@ -54,4 +55,4 @@ const Textarea = ({
   </div>
 );
 
-export default Textarea;
+export default React.memo(Textarea);

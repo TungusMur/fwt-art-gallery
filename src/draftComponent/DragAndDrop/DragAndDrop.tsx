@@ -1,9 +1,6 @@
 import { useState, useRef } from 'react';
 import classNames from 'classnames/bind';
-import {
-  handleDrag,
-  handleDropOrInput,
-} from '../WindowPaintingAction/function';
+import { handleDrag, handleDropOrInput } from '../WindowEditPainting/function';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
