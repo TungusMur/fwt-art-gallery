@@ -1,20 +1,37 @@
 .slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.slider-wrapper {
+  $parent: &;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 50vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 
   &__btn {
+    cursor: pointer;
+    padding: 0px 10px;
     position: absolute;
     height: 100vh;
-    width: 20px;
     top: 0;
     z-index: 2;
-    background: rgb(149, 107, 179);
+
+    &:hover {
+      #{$parent}__icon * {
+        fill: #fff;
+      }
+    }
+
+    &:disabled {
+      cursor: pointer;
+    }
   }
 
   &__btnPrev {
@@ -22,13 +39,24 @@
   }
 
   &__btnNext {
+    transform: rotateZ(180deg);
     right: 0;
+  }
+
+  &__icon {
+    pointer-events: none;
+
+    & * {
+      fill: #9c9c9c;
+    }
   }
 }
 
 .slider-data {
+  // transition: 0.7s;
   position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +64,12 @@
   &__item {
     position: absolute;
     width: 100%;
-    transition: 1s;
+    height: 100%;
+    transition: 0.4s;
+    // height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 
     &_prev {
       z-index: 0;
@@ -56,6 +89,52 @@
 
   &__img {
     max-height: 100%;
-    width: 100%;
   }
+}
+
+.slider-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+  // height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  &_prev {
+    z-index: 0;
+    left: -100%;
+  }
+
+  &_active {
+    z-index: 1;
+    left: 0;
+  }
+
+  &_next {
+    z-index: 0;
+    left: 100%;
+  }
+
+  &__img {
+    max-height: 100%;
+  }
+
+  &__description {
+    display: none;
+  }
+}
+
+.slider-counter {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  color: #dedede;
+  font-family: 'Cormorant SC SemiBold';
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
