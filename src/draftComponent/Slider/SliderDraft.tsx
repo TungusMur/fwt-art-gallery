@@ -1,36 +1,13 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { ReactComponent as ArrowIcon } from '../../assets/img/arrowIcon.svg';
-import { ReactComponent as EditIcon } from '../../assets/img/editIcon.svg';
-import { ReactComponent as BagIcon } from '../../assets/img/bagIcon.svg';
-import { ReactComponent as ImgIcon } from '../../assets/img/imgIcon.svg';
-import { ReactComponent as CrossIcon } from '../../assets/img/crossIcon.svg';
-import {
-  handleTouchStart,
-  handleTouchMove,
-  handleTouchEnd,
-} from './handleTouchStart';
-import setSliderData from './setSliderData';
 import styles from './styles.scss';
-import Button from '../../ui-components/Button';
+import SliderItem from './SliderItem';
 
 const cx = classNames.bind(styles);
 
 type ISlider = {
   data: string[];
-  // data: {
-  //   _id: string | number;
-  //   name: string;
-  //   yearOfCreation: string | number;
-  //   image: {
-  //     _id: string | number;
-  //     src: string | number;
-  //     webp: string | number;
-  //     src2x: string | number;
-  //     webp2x: string | number;
-  //     original: string | number;
-  //   };
-  // }[];
   activeImage: number;
 };
 
@@ -39,9 +16,26 @@ const Slider = ({ data, activeImage }: ISlider) => {
   const btnPrevRef = useRef<HTMLButtonElement>(null);
   const btnNextRef = useRef<HTMLButtonElement>(null);
   const [activeItem, setActiveItem] = useState<number>(activeImage + 1);
+  const xСoordinate: { xMove: number | null; xStart: number | null } = {
+    xMove: null,
+    xStart: null,
+  };
+
+  //   const [xStart, setXStart] = useState<number | null>(null);
+  //   let xMove: number | null = null;
 
   const sliderData = useMemo(
-    () => setSliderData(data, activeItem),
+    () => [
+      {
+        src: data[activeItem === 1 ? data.length - 1 : activeItem - 2],
+        id: activeItem === 1 ? data.length - 1 : activeItem - 2,
+      },
+      { src: data[activeItem - 1], id: activeItem - 1 },
+      {
+        src: data[activeItem === data.length ? 0 : activeItem],
+        id: activeItem === data.length ? 0 : activeItem,
+      },
+    ],
     [activeItem]
   );
 
@@ -58,20 +52,6 @@ const Slider = ({ data, activeImage }: ISlider) => {
 
   return (
     <div className={cx('slider')}>
-      <div className={cx('slider-header')}>
-        <Button
-          className={cx(
-            'slider-header__btn',
-            'slider-header__btnImg',
-            'btn-icon'
-          )}
-        >
-          <ImgIcon />
-        </Button>
-        <button className={cx('slider-header__btn', 'slider-header__btnClose')}>
-          <CrossIcon />
-        </button>
-      </div>
       <div className={cx('slider-wrapper')}>
         <button
           ref={btnPrevRef}
@@ -97,15 +77,47 @@ const Slider = ({ data, activeImage }: ISlider) => {
         <div
           className={cx('slider-data')}
           ref={sliderDataRef}
-          onTouchStart={(e) => handleTouchStart(e, sliderDataRef)}
-          onTouchMove={(e) => handleTouchMove(e, sliderDataRef)}
-          onTouchEnd={() =>
-            handleTouchEnd(
-              sliderDataRef,
-              (e) => setActiveItem(e(activeItem)),
-              data.length
-            )
-          }
+          onTouchStart={(e) => {
+            // setXStart(e.touches[0].clientX);
+            xСoordinate.xStart = e.touches[0].clientX;
+            if (sliderDataRef.current) {
+              sliderDataRef.current.style.transition = '0s left';
+            }
+          }}
+          onTouchMove={(e) => {
+            if (sliderDataRef.current && xСoordinate.xMove) {
+              sliderDataRef.current.style.left = `${
+                sliderDataRef.current.offsetLeft +
+                e.touches[0].clientX -
+                xСoordinate.xMove
+              }px`;
+            }
+            xСoordinate.xMove = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            if (sliderDataRef.current) {
+              sliderDataRef.current.style.transition = '0.4s left';
+              sliderDataRef.current.style.left = '0px';
+              if (
+                xСoordinate.xStart &&
+                xСoordinate.xMove &&
+                sliderDataRef.current.offsetWidth / 3 <
+                  Math.abs(xСoordinate.xStart - xСoordinate.xMove)
+              ) {
+                const difference = xСoordinate.xStart - xСoordinate.xMove;
+                if (difference > 0) {
+                  setActiveItem((activeItem) =>
+                    activeItem === data.length ? 1 : activeItem + 1
+                  );
+                } else {
+                  setActiveItem((activeItem) =>
+                    activeItem === 1 ? data.length : activeItem - 1
+                  );
+                }
+              }
+            }
+            xСoordinate.xMove = null;
+          }}
         >
           {sliderData.map((item, index) => (
             <div
@@ -115,30 +127,28 @@ const Slider = ({ data, activeImage }: ISlider) => {
                 'slider-item_next': index === 2,
               })}
               key={item.id}
-              onDrag={(e) => e.preventDefault()}
-              onDragEnter={(e) => e.preventDefault()}
-              onDragLeave={(e) => e.preventDefault()}
-              onDragStart={(e) => e.preventDefault()}
+              onDrag={(e) => {
+                e.preventDefault();
+              }}
+              onDragEnter={(e) => {
+                e.preventDefault();
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault();
+              }}
+              onDragStart={(e) => {
+                e.preventDefault();
+              }}
             >
               <img
                 className={cx('slider-item__img')}
                 src={item.src}
                 alt={item.src}
               />
-              <div className={cx('slider-description')}>
-                <div className={cx('slider-description__content')}>
-                  <div className={cx('slider-description__date')}>{'1886'}</div>
-                  <div className={cx('slider-description__titel')}>
-                    {'Portrait of Vincent van Gogh'}
-                  </div>
-                  <div className={cx('slider-description__action')}>
-                    <Button className={cx('btn-icon')} isFalled>
-                      <EditIcon />
-                    </Button>
-                    <Button className={cx('btn-icon')} isFalled>
-                      <BagIcon />
-                    </Button>
-                  </div>
+              <div className={cx('slider-item__description')}>
+                <div className={cx('slider-item__date')}>{'1886'}</div>
+                <div className={cx('slider-item__titel')}>
+                  {'Portrait of Vincent van Gogh'}
                 </div>
               </div>
             </div>

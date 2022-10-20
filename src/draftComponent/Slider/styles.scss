@@ -2,6 +2,51 @@
   width: 100vw;
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-header {
+  top: 20px;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: calc(100% - 48px);
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+
+  &__btnImg {
+    position: relative;
+
+    &::before {
+      width: max-content;
+      position: absolute;
+      color: #dedede;
+      content: 'Remove the cover';
+      text-transform: uppercase;
+      font-size: '';
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      left: 40px;
+      border-bottom: 1.6px solid;
+    }
+  }
+
+  @media screen and (min-width: 615px) {
+    top: 40px;
+    width: calc(100% - 80px);
+  }
+
+  @media screen and (min-width: 769px) {
+    top: 60px;
+  }
+
+  @media screen and (min-width: 1281px) {
+    width: calc(100% - 240px);
+  }
 }
 
 .slider-wrapper {
@@ -16,6 +61,7 @@
   overflow: hidden;
 
   &__btn {
+    display: none;
     cursor: pointer;
     padding: 0px 10px;
     position: absolute;
@@ -31,6 +77,10 @@
 
     &:disabled {
       cursor: pointer;
+    }
+
+    @media screen and (min-width: 615px) {
+      display: initial;
     }
   }
 
@@ -53,51 +103,20 @@
 }
 
 .slider-data {
-  // transition: 0.7s;
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &__item {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: 0.4s;
-    // height: 100vh;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-
-    &_prev {
-      z-index: 0;
-      left: -100%;
-    }
-
-    &_active {
-      z-index: 1;
-      left: 0;
-    }
-
-    &_next {
-      z-index: 0;
-      left: 100%;
-    }
-  }
-
-  &__img {
-    max-height: 100%;
-  }
+  transition: 0.4s left;
 }
 
 .slider-item {
   position: absolute;
   width: 100%;
   height: 100%;
-  transition: 0.4s;
-  // height: 100vh;
+  transition: 0.4s left;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -120,12 +139,90 @@
   &__img {
     max-height: 100%;
   }
-
-  &__description {
-    display: none;
-  }
 }
 
+.slider-description {
+  position: absolute;
+  background: #121212;
+  width: 253px;
+  min-height: 68px;
+  padding: 0px 12px;
+  display: flex;
+  left: 0;
+  bottom: 14.08%;
+  align-items: center;
+
+  &__content {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 615px) {
+      gap: 8px;
+    }
+  }
+
+  &__date {
+    color: #ab8956;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 10px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 615px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__titel {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 615px) {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  &__action {
+    display: flex;
+    position: absolute;
+    bottom: -73.6%;
+    gap: 20px;
+    left: 20px;
+
+    @media screen and (min-width: 615px) {
+      bottom: auto;
+      right: 20px;
+      top: 20px;
+      left: auto;
+    }
+  }
+
+  @media screen and (min-width: 615px) {
+    padding: 0px 20px;
+    width: 458px;
+    min-height: 122px;
+    bottom: 5.86%;
+    left: 5.21%;
+  }
+
+  @media screen and (min-width: 769px) {
+    width: 498px;
+    min-height: 122px;
+    left: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 1281px) {
+    left: 8.33%;
+    bottom: 12.5%;
+  }
+}
 .slider-counter {
   position: absolute;
   bottom: 20px;
@@ -137,4 +234,27 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+
+  @media screen and (min-width: 615px) {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 100%;
+    bottom: 5.86%;
+    right: 5.21%;
+  }
+
+  @media screen and (min-width: 769px) {
+    right: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 769px) {
+    right: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 1281px) {
+    right: 8.33%;
+    bottom: 12.5%;
+  }
 }
