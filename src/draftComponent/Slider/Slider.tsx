@@ -5,6 +5,7 @@ import { ReactComponent as EditIcon } from '../../assets/img/editIcon.svg';
 import { ReactComponent as BagIcon } from '../../assets/img/bagIcon.svg';
 import { ReactComponent as ImgIcon } from '../../assets/img/imgIcon.svg';
 import { ReactComponent as CrossIcon } from '../../assets/img/crossIcon.svg';
+import Button from '../../ui-components/Button';
 import {
   handleTouchStart,
   handleTouchMove,
@@ -12,7 +13,6 @@ import {
 } from './handleTouch';
 import setSliderData from './setSliderData';
 import styles from './styles.scss';
-import Button from '../../ui-components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -31,17 +31,23 @@ type ISlider = {
   //     original: string | number;
   //   };
   // }[];
+  theme?: 'light' | 'dark';
   activeImage: number;
 };
 
-const Slider = ({ data, activeImage }: ISlider) => {
+const Slider = ({ data, theme = 'light', activeImage }: ISlider) => {
   const sliderDataRef = useRef<HTMLDivElement | null>(null);
   const btnPrevRef = useRef<HTMLButtonElement>(null);
   const btnNextRef = useRef<HTMLButtonElement>(null);
-  const [activeItem, setActiveItem] = useState<number>(activeImage + 1);
+
+  const [activeItemData, setActiveItemData] = useState<{
+    activeItem: number;
+    action: boolean;
+  }>({ activeItem: activeImage, action: true });
+  const { activeItem, action } = activeItemData;
 
   const sliderData = useMemo(
-    () => setSliderData(data, activeItem),
+    () => setSliderData(data, activeItem, action),
     [activeItem]
   );
 
@@ -65,6 +71,8 @@ const Slider = ({ data, activeImage }: ISlider) => {
             'slider-header__btnImg',
             'btn-icon'
           )}
+          theme={theme}
+          isFalled
         >
           <ImgIcon />
         </Button>
@@ -81,9 +89,10 @@ const Slider = ({ data, activeImage }: ISlider) => {
               btnNextRef.current.disabled = true;
               btnPrevRef.current.disabled = true;
             }
-            setActiveItem((activeItem) =>
-              activeItem === 1 ? data.length : activeItem - 1
-            );
+            setActiveItemData({
+              activeItem: activeItem === 0 ? data.length - 1 : activeItem - 1,
+              action: false,
+            });
           }}
         >
           <ArrowIcon
@@ -102,7 +111,7 @@ const Slider = ({ data, activeImage }: ISlider) => {
           onTouchEnd={() =>
             handleTouchEnd(
               sliderDataRef,
-              (e) => setActiveItem(e(activeItem)),
+              (cb) => setActiveItemData(cb(activeItemData)),
               data.length
             )
           }
@@ -131,14 +140,14 @@ const Slider = ({ data, activeImage }: ISlider) => {
                   <div className={cx('slider-description__titel')}>
                     {'Portrait of Vincent van Gogh'}
                   </div>
-                  <div className={cx('slider-description__action')}>
-                    <Button className={cx('btn-icon')} isFalled>
-                      <EditIcon />
-                    </Button>
-                    <Button className={cx('btn-icon')} isFalled>
-                      <BagIcon />
-                    </Button>
-                  </div>
+                </div>
+                <div className={cx('slider-description__action')}>
+                  <Button className={cx('btn-icon')} theme={theme} isFalled>
+                    <EditIcon />
+                  </Button>
+                  <Button className={cx('btn-icon')} theme={theme} isFalled>
+                    <BagIcon />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -152,17 +161,18 @@ const Slider = ({ data, activeImage }: ISlider) => {
               btnNextRef.current.disabled = true;
               btnPrevRef.current.disabled = true;
             }
-            setActiveItem((activeItem) =>
-              activeItem === data.length ? 1 : activeItem + 1
-            );
+            setActiveItemData({
+              activeItem: activeItem === data.length - 1 ? 0 : activeItem + 1,
+              action: true,
+            });
           }}
         >
           <ArrowIcon className={cx('slider-wrapper__icon')} />
         </button>
       </div>
-      <div
-        className={cx('slider-counter')}
-      >{`${activeItem}/${data.length}`}</div>
+      <div className={cx('slider-counter')}>{`${activeItem + 1}/${
+        data.length
+      }`}</div>
     </div>
   );
 };

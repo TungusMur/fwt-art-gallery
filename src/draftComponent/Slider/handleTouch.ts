@@ -37,7 +37,12 @@ const handleTouchMove = (
 
 const handleTouchEnd = (
   ref: React.MutableRefObject<HTMLDivElement | null>,
-  setActiveItem: (e: (activeItem: number) => number) => void,
+  setActiveItem: (
+    cb: (state: { activeItem: number; action: boolean }) => {
+      activeItem: number;
+      action: boolean;
+    }
+  ) => void,
   dataLength: number
 ) => {
   if (ref.current) {
@@ -51,13 +56,15 @@ const handleTouchEnd = (
     ) {
       const difference = xСoordinate.xStart - xСoordinate.xMove;
       if (difference > 0) {
-        setActiveItem((activeItem) =>
-          activeItem === dataLength ? 1 : activeItem + 1
-        );
+        setActiveItem(({ activeItem }) => ({
+          activeItem: activeItem === dataLength - 1 ? 0 : activeItem + 1,
+          action: true,
+        }));
       } else {
-        setActiveItem((activeItem) =>
-          activeItem === 1 ? dataLength : activeItem - 1
-        );
+        setActiveItem(({ activeItem }) => ({
+          activeItem: activeItem === 0 ? dataLength - 1 : activeItem - 1,
+          action: false,
+        }));
       }
     }
   }

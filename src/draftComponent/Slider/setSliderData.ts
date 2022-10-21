@@ -1,65 +1,47 @@
-// const setSliderData = (data: string[], activeItem: number) => {
-//   const sliderData: { src: string; id: number }[] = [];
+let draftId: number | undefined;
 
-//   if (data.length < 5) {
-//     return sliderData;
-//   }
-
-//   const backPart =
-//     activeItem < 2
-//       ? data.slice(activeItem - 2)
-//       : data.slice(activeItem - 2, activeItem);
-//   const frontPart =
-//     data.length - 3 < activeItem
-//       ? data.slice(0, activeItem - data.length + 3)
-//       : data.slice(activeItem + 1, activeItem + 3);
-
-//   if (activeItem === 1) {
-//     const mainPart = data.slice(0, activeItem + 1);
-//     return [...backPart, ...mainPart, ...frontPart];
-//   }
-
-//   if (activeItem === data.length - 2) {
-//     const mainPart = data.slice(activeItem);
-//     return [...backPart, ...mainPart, ...frontPart];
-//   }
-
-//   const mainPart = [data[activeItem]];
-
-//   return [...backPart, ...mainPart, ...frontPart];
-// };
-
-const setSliderData = (data: string[], activeItem: number) => {
+const setSliderData = (data: string[], activeItem: number, action: boolean) => {
   if (data.length === 1) {
     return [];
   }
 
-  if (data.length === 2) {
+  if (data.length === 2 || data.length === 3) {
     const dataSlider = [...data, ...data];
+
+    if (draftId === undefined) {
+      draftId = activeItem;
+    } else {
+      draftId += action ? 1 : -1;
+      if (draftId === -1) {
+        draftId = data.length * 2 - 1;
+      }
+      if (draftId === data.length * 2) {
+        draftId = 0;
+      }
+    }
+
     return [
       {
-        src: dataSlider[
-          activeItem === 1 ? dataSlider.length - 1 : activeItem - 2
-        ],
-        id: activeItem === 1 ? dataSlider.length - 1 : activeItem - 2,
+        src: dataSlider[draftId === 0 ? dataSlider.length - 1 : draftId - 1],
+        id: draftId === 0 ? dataSlider.length - 1 : draftId - 1,
       },
-      { src: dataSlider[activeItem - 1], id: activeItem - 1 },
+      { src: dataSlider[draftId], id: draftId },
       {
-        src: dataSlider[activeItem === dataSlider.length ? 0 : activeItem],
-        id: activeItem === dataSlider.length ? 0 : activeItem,
+        src: dataSlider[draftId === dataSlider.length - 1 ? 0 : draftId + 1],
+        id: draftId === dataSlider.length - 1 ? 0 : draftId + 1,
       },
     ];
   }
 
   return [
     {
-      src: data[activeItem === 1 ? data.length - 1 : activeItem - 2],
-      id: activeItem === 1 ? data.length - 1 : activeItem - 2,
+      src: data[activeItem === 0 ? data.length - 1 : activeItem - 1],
+      id: activeItem === 0 ? data.length - 1 : activeItem - 1,
     },
-    { src: data[activeItem - 1], id: activeItem - 1 },
+    { src: data[activeItem], id: activeItem },
     {
-      src: data[activeItem === data.length ? 0 : activeItem],
-      id: activeItem === data.length ? 0 : activeItem,
+      src: data[activeItem === data.length - 1 ? 0 : activeItem + 1],
+      id: activeItem === data.length - 1 ? 0 : activeItem + 1,
     },
   ];
 };
