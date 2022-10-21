@@ -23,10 +23,10 @@ const WindowEditProfile = () => {
         className={cx('windowEditProfile__content')}
         onDragStart={(e) => handleDrag(e)}
         onDragEnter={(e) =>
-          handleDrag(e, uploadRef, 'enter', (state) => setDragState(state))
+          handleDrag(e, 'enter', (state) => setDragState(state))
         }
         onDragLeave={(e) =>
-          handleDrag(e, uploadRef, 'leave', (state) => setDragState(state))
+          handleDrag(e, 'leave', (state) => setDragState(state))
         }
         onDragOver={(e) => handleDrag(e)}
         onDrop={(e) =>
@@ -78,7 +78,11 @@ const WindowEditProfile = () => {
             </span>
           </label>
         </div>
-        <div className={cx('windowEditProfile-form')}>
+        <div
+          className={cx('windowEditProfile-form', {
+            'windowEditProfile-form_dragEnter': dragState,
+          })}
+        >
           <div className={cx('windowEditProfile-form__content')}>
             <Input title="Name*" placeholder="" textError="" />
             <Input title="Years of life" placeholder="" textError="" />

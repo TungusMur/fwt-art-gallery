@@ -53,10 +53,10 @@ const WindowEditPainting = ({ theme = 'light' }: IWindowEditPainting) => {
           )}
           onDragStart={(e) => handleDrag(e)}
           onDragEnter={(e) =>
-            handleDrag(e, uploadRef, 'enter', (state) => setDragState(state))
+            handleDrag(e, 'enter', (state) => setDragState(state))
           }
           onDragLeave={(e) =>
-            handleDrag(e, uploadRef, 'leave', (state) => setDragState(state))
+            handleDrag(e, 'leave', (state) => setDragState(state))
           }
           onDragOver={(e) => handleDrag(e)}
           onDrop={(e) =>
@@ -71,7 +71,11 @@ const WindowEditPainting = ({ theme = 'light' }: IWindowEditPainting) => {
           {!file && (
             <>
               <DropIcon className={cx('windowEditPainting-upload__icon')} />
-              <div className={cx('windowEditPainting-upload__titel')}>
+              <div
+                className={cx('windowEditPainting-upload__titel', {
+                  'windowEditPainting-upload__titel_dragEnter': dragState,
+                })}
+              >
                 Drop your image here, or
                 <label className={cx('windowEditPainting-upload__label')}>
                   <input

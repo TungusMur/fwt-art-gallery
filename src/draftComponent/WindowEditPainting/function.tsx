@@ -1,6 +1,5 @@
 const handleDrag = (
   e: React.DragEvent<HTMLDivElement> | React.DragEvent<HTMLElement>,
-  ref?: React.RefObject<HTMLDivElement> | React.RefObject<HTMLElement>,
   typeDrag?: string,
   setDragState?: (state: boolean) => void
 ) => {
@@ -10,8 +9,7 @@ const handleDrag = (
     setDragState(true);
   } else if (
     typeDrag === 'leave' &&
-    ref &&
-    !ref.current?.contains(e.relatedTarget as HTMLElement) &&
+    // && ref
     setDragState
   ) {
     setDragState(false);
@@ -36,3 +34,4 @@ const handleDropOrInput = (
 };
 
 export { handleDrag, handleDropOrInput };
+// ref?: React.RefObject<HTMLDivElement> | React.RefObject<HTMLElement>,

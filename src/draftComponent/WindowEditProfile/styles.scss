@@ -64,6 +64,7 @@
     }
 
     &_dragEnter {
+      pointer-events: none;
       position: absolute;
       border-image: url(../../assets/img/borderProfile.png) 20 fill/ 20px round;
       width: 100%;
@@ -125,6 +126,10 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
+
+  &_dragEnter {
+    pointer-events: none;
+  }
 
   &__content {
     display: flex;

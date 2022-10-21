@@ -34,10 +34,10 @@ const DragAndDrop = ({
         className={cx(`${className}__content`)}
         onDragStart={(e) => handleDrag(e)}
         onDragEnter={(e) =>
-          handleDrag(e, uploadRef, 'enter', (state) => setDragState(state))
+          handleDrag(e, 'enter', (state) => setDragState(state))
         }
         onDragLeave={(e) =>
-          handleDrag(e, uploadRef, 'leave', (state) => setDragState(state))
+          handleDrag(e, 'leave', (state) => setDragState(state))
         }
         onDragOver={(e) => handleDrag(e)}
         onDrop={(e) =>
