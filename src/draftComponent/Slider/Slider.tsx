@@ -9,7 +9,7 @@ import {
   handleTouchStart,
   handleTouchMove,
   handleTouchEnd,
-} from './handleTouchStart';
+} from './handleTouch';
 import setSliderData from './setSliderData';
 import styles from './styles.scss';
 import Button from '../../ui-components/Button';
