@@ -1,10 +1,20 @@
 .windowDelete {
-  background: rgba(3, 3, 3, 0.3);
+  position: absolute;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  &_theme {
+    &_light {
+      background: rgba(3, 3, 3, 0.3);
+    }
+
+    &_dark {
+      background: rgba(3, 3, 3, 0.6);
+    }
+  }
 
   &__content {
     position: relative;

@@ -11,7 +11,7 @@ type IWindowDelete = {
 };
 
 const WindowDelete = ({ theme = 'light' }: IWindowDelete) => (
-  <div className={cx('windowDelete')}>
+  <div className={cx('windowDelete', `windowDelete_theme_${theme}`)}>
     <div
       className={cx(
         'windowDelete__content',

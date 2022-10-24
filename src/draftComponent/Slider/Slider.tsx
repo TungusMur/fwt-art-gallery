@@ -37,8 +37,9 @@ type ISlider = {
 
 const Slider = ({ data, theme = 'light', activeImage }: ISlider) => {
   const sliderDataRef = useRef<HTMLDivElement | null>(null);
-  const btnPrevRef = useRef<HTMLButtonElement>(null);
-  const btnNextRef = useRef<HTMLButtonElement>(null);
+  const btnPrevRef = useRef<HTMLButtonElement | null>(null);
+  const btnNextRef = useRef<HTMLButtonElement | null>(null);
+  const [coverState, setCoverState] = useState<boolean>(false);
 
   const [activeItemData, setActiveItemData] = useState<{
     activeItem: number;
@@ -63,122 +64,140 @@ const Slider = ({ data, theme = 'light', activeImage }: ISlider) => {
   }, [activeItem]);
 
   return (
-    <div className={cx('slider')}>
+    <div className={cx('slider', `slider_theme_${theme}`)}>
       <div className={cx('slider-header')}>
         <Button
           className={cx(
             'slider-header__btn',
-            'slider-header__btnImg',
+            'slider-btnImg',
             'btn-icon',
             'btn-icon_over'
           )}
           theme={theme}
           isFalled
         >
-          <ImgIcon />
+          <div
+            className={cx('slider-btnImg__content')}
+            onClick={() => setCoverState((coverState) => !coverState)}
+          >
+            <ImgIcon />
+          </div>
         </Button>
         <button className={cx('slider-header__btn', 'slider-header__btnClose')}>
           <CrossIcon />
         </button>
       </div>
-      <div className={cx('slider-wrapper')}>
-        <button
-          ref={btnPrevRef}
-          className={cx('slider-wrapper__btn', 'slider-wrapper__btnPrev')}
-          onClick={() => {
-            if (btnNextRef.current && btnPrevRef.current) {
-              btnNextRef.current.disabled = true;
-              btnPrevRef.current.disabled = true;
-            }
-            setActiveItemData({
-              activeItem: activeItem === 0 ? data.length - 1 : activeItem - 1,
-              action: false,
-            });
-          }}
-        >
-          <ArrowIcon
-            disabled={btnNextRef?.current?.disabled}
-            className={cx('slider-wrapper__icon')}
-            onClick={(e: React.DragEvent<HTMLDivElement>) => {
-              e.preventDefault();
+      {coverState && (
+        <img
+          className={cx('slider-mainImg')}
+          src={data[activeItem]}
+          alt="img"
+        />
+      )}
+      {!coverState && (
+        <div className={cx('slider-wrapper')}>
+          <button
+            ref={btnPrevRef}
+            className={cx('slider-wrapper__btn', 'slider-wrapper__btnPrev')}
+            onClick={() => {
+              if (btnNextRef.current && btnPrevRef.current) {
+                btnNextRef.current.disabled = true;
+                btnPrevRef.current.disabled = true;
+              }
+              setActiveItemData({
+                activeItem: activeItem === 0 ? data.length - 1 : activeItem - 1,
+                action: false,
+              });
             }}
-          />
-        </button>
-        <div
-          className={cx('slider-data')}
-          ref={sliderDataRef}
-          onTouchStart={(e) => handleTouchStart(e, sliderDataRef)}
-          onTouchMove={(e) => handleTouchMove(e, sliderDataRef)}
-          onTouchEnd={() =>
-            handleTouchEnd(
-              sliderDataRef,
-              (cb) => setActiveItemData(cb(activeItemData)),
-              data.length
-            )
-          }
-        >
-          {sliderData.map((item, index) => (
-            <div
-              className={cx('slider-item', {
-                'slider-item_prev': index === 0,
-                'slider-item_active': index === 1,
-                'slider-item_next': index === 2,
-              })}
-              key={item.id}
-              onDrag={(e) => e.preventDefault()}
-              onDragEnter={(e) => e.preventDefault()}
-              onDragLeave={(e) => e.preventDefault()}
-              onDragStart={(e) => e.preventDefault()}
-            >
-              <img
-                className={cx('slider-item__img')}
-                src={item.src}
-                alt={item.src}
-              />
+          >
+            <ArrowIcon
+              disabled={btnNextRef?.current?.disabled}
+              className={cx('slider-wrapper__icon')}
+              onClick={(e: React.DragEvent<HTMLDivElement>) => {
+                e.preventDefault();
+              }}
+            />
+          </button>
+          <div
+            className={cx('slider-data')}
+            ref={sliderDataRef}
+            onTouchStart={(e) => handleTouchStart(e, sliderDataRef)}
+            onTouchMove={(e) => handleTouchMove(e, sliderDataRef)}
+            onTouchEnd={() =>
+              handleTouchEnd(
+                sliderDataRef,
+                (cb) => setActiveItemData(cb(activeItemData)),
+                data.length
+              )
+            }
+          >
+            {sliderData.map((item, index) => (
               <div
-                className={cx(
-                  'slider-description',
-                  `slider-description_theme_${theme}`
-                )}
+                className={cx('slider-item', {
+                  'slider-item_prev': index === 0,
+                  'slider-item_active': index === 1,
+                  'slider-item_next': index === 2,
+                })}
+                key={item.id}
+                onDrag={(e) => e.preventDefault()}
+                onDragEnter={(e) => e.preventDefault()}
+                onDragLeave={(e) => e.preventDefault()}
+                onDragStart={(e) => e.preventDefault()}
               >
-                <div className={cx('slider-description__content')}>
-                  <div className={cx('slider-description__date')}>{'1886'}</div>
-                  <div className={cx('slider-description__titel')}>
-                    {'Portrait of Vincent van Gogh'}
+                <img
+                  className={cx('slider-item__img')}
+                  src={item.src}
+                  alt={item.src}
+                />
+                <div
+                  className={cx(
+                    'slider-description',
+                    `slider-description_theme_${theme}`
+                  )}
+                >
+                  <div className={cx('slider-description__content')}>
+                    <div className={cx('slider-description__date')}>
+                      {'1886'}
+                    </div>
+                    <div className={cx('slider-description__titel')}>
+                      {'Portrait of Vincent van Gogh'}
+                    </div>
+                  </div>
+                  <div className={cx('slider-description__action')}>
+                    <Button className={cx('btn-icon')} theme={theme} isFalled>
+                      <EditIcon />
+                    </Button>
+                    <Button className={cx('btn-icon')} theme={theme} isFalled>
+                      <BagIcon />
+                    </Button>
                   </div>
                 </div>
-                <div className={cx('slider-description__action')}>
-                  <Button className={cx('btn-icon')} theme={theme} isFalled>
-                    <EditIcon />
-                  </Button>
-                  <Button className={cx('btn-icon')} theme={theme} isFalled>
-                    <BagIcon />
-                  </Button>
-                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <button
+            ref={btnNextRef}
+            className={cx('slider-wrapper__btn', 'slider-wrapper__btnNext')}
+            onClick={() => {
+              if (btnNextRef.current && btnPrevRef.current) {
+                btnNextRef.current.disabled = true;
+                btnPrevRef.current.disabled = true;
+              }
+              setActiveItemData({
+                activeItem: activeItem === data.length - 1 ? 0 : activeItem + 1,
+                action: true,
+              });
+            }}
+          >
+            <ArrowIcon className={cx('slider-wrapper__icon')} />
+          </button>
         </div>
-        <button
-          ref={btnNextRef}
-          className={cx('slider-wrapper__btn', 'slider-wrapper__btnNext')}
-          onClick={(e) => {
-            if (btnNextRef.current && btnPrevRef.current) {
-              btnNextRef.current.disabled = true;
-              btnPrevRef.current.disabled = true;
-            }
-            setActiveItemData({
-              activeItem: activeItem === data.length - 1 ? 0 : activeItem + 1,
-              action: true,
-            });
-          }}
-        >
-          <ArrowIcon className={cx('slider-wrapper__icon')} />
-        </button>
-      </div>
-      <div className={cx('slider-counter')}>{`${activeItem + 1}/${
-        data.length
-      }`}</div>
+      )}
+      {!coverState && (
+        <div className={cx('slider-counter')}>{`${activeItem + 1}/${
+          data.length
+        }`}</div>
+      )}
     </div>
   );
 };

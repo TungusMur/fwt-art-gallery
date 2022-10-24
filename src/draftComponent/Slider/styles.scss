@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  &_theme {
+    &_light {
+      background: rgba(3, 3, 3, 0.3);
+    }
+
+    &_dark {
+      background: rgba(3, 3, 3, 0.6);
+    }
+  }
 }
 
 .slider-header {
@@ -16,24 +27,6 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-
-  &__btnImg {
-    position: relative;
-
-    &::before {
-      width: max-content;
-      position: absolute;
-      color: #dedede;
-      content: 'Remove the cover';
-      text-transform: uppercase;
-      font-size: '';
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 15px;
-      left: 40px;
-      border-bottom: 1.6px solid #dedede;
-    }
-  }
 
   @media screen and (min-width: 615px) {
     top: 40px;
@@ -47,6 +40,29 @@
   @media screen and (min-width: 1281px) {
     width: calc(100% - 240px);
   }
+}
+
+.slider-btnImg {
+  position: relative;
+
+  &__content::before {
+    width: max-content;
+    position: absolute;
+    color: #dedede;
+    content: 'Remove the cover';
+    text-transform: uppercase;
+    font-size: '';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    left: 40px;
+    border-bottom: 1.6px solid #dedede;
+  }
+}
+
+.slider-mainImg {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .slider-wrapper {
