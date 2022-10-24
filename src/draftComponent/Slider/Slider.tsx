@@ -5,7 +5,7 @@ import { ReactComponent as EditIcon } from '../../assets/img/editIcon.svg';
 import { ReactComponent as BagIcon } from '../../assets/img/bagIcon.svg';
 import { ReactComponent as ImgIcon } from '../../assets/img/imgIcon.svg';
 import { ReactComponent as CrossIcon } from '../../assets/img/crossIcon.svg';
-import Button from '../../ui-components/Button';
+import Button from '../ButtonDraft';
 import {
   handleTouchStart,
   handleTouchMove,
@@ -69,7 +69,8 @@ const Slider = ({ data, theme = 'light', activeImage }: ISlider) => {
           className={cx(
             'slider-header__btn',
             'slider-header__btnImg',
-            'btn-icon'
+            'btn-icon',
+            'btn-icon_over'
           )}
           theme={theme}
           isFalled
@@ -134,7 +135,12 @@ const Slider = ({ data, theme = 'light', activeImage }: ISlider) => {
                 src={item.src}
                 alt={item.src}
               />
-              <div className={cx('slider-description')}>
+              <div
+                className={cx(
+                  'slider-description',
+                  `slider-description_theme_${theme}`
+                )}
+              >
                 <div className={cx('slider-description__content')}>
                   <div className={cx('slider-description__date')}>{'1886'}</div>
                   <div className={cx('slider-description__titel')}>

@@ -31,7 +31,7 @@
       font-size: 12px;
       line-height: 15px;
       left: 40px;
-      border-bottom: 1.6px solid;
+      border-bottom: 1.6px solid #dedede;
     }
   }
 
@@ -149,7 +149,6 @@
 
 .slider-description {
   position: absolute;
-  background: #121212;
   width: 253px;
   min-height: 68px;
   padding: 0px 12px;
@@ -158,12 +157,26 @@
   bottom: 14.08%;
   align-items: center;
 
+  &_theme {
+    &_light {
+      color: #9b4b4b;
+      --titel-color: #121212;
+      background: #fcfcfc;
+    }
+
+    &_dark {
+      color: #ab8956;
+      --titel-color: #ffffff;
+      background: #121212;
+    }
+  }
+
   &__content {
     gap: 4px;
     display: flex;
     flex-direction: column;
     position: relative;
-    color: #ab8956;
+    color: currentColor;
 
     &::before {
       height: 100%;
@@ -197,7 +210,7 @@
   }
 
   &__titel {
-    color: #ffffff;
+    color: var(--titel-color);
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;

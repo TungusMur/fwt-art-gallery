@@ -1,12 +1,10 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
-// import styles from './styles.scss';
+import styles from './styles.scss';
 
-// const cx = classNames.bind(styles);
-const cx = classNames.bind({});
+const cx = classNames.bind(styles);
 
-
-type IButton = {
+type IButtonDraft = {
   children: ReactNode;
   className?: string;
   theme?: 'light' | 'dark';
@@ -16,7 +14,7 @@ type IButton = {
   args?: HTMLButtonElement;
 };
 
-const Button = ({
+const ButtonDraft = ({
   children,
   className,
   theme = 'light',
@@ -24,7 +22,7 @@ const Button = ({
   isOutlined = false,
   isDisabled = false,
   ...args
-}: IButton) => (
+}: IButtonDraft) => (
   <button
     className={cx('btn', className, `btn_theme_${theme}`, {
       btn_falled: isFalled,
@@ -38,4 +36,4 @@ const Button = ({
   </button>
 );
 
-export default Button;
+export default ButtonDraft;
