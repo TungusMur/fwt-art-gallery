@@ -6,18 +6,22 @@ import styles from './styles.scss';
 const cx = classNames.bind(styles);
 
 type IInput = {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFocus: () => void;
+  value: string;
   title: string;
   placeholder: string;
-  isError?: boolean;
   textError: string;
   theme?: 'light' | 'dark';
   args?: HTMLInputElement;
 };
 
 const Input = ({
+  handleChange,
+  handleFocus,
+  value,
   title,
   placeholder,
-  isError = false,
   textError,
   theme = 'light',
   ...args
@@ -33,12 +37,16 @@ const Input = ({
         'paragraph_light',
         'paragraph_light_base',
         {
-          input__input_isError: isError,
+          input__input_isError: textError,
         }
       )}
       placeholder={placeholder}
+      {...args}
+      onChange={(e) => handleChange(e)}
+      onFocus={() => handleFocus()}
+      value={value}
     />
-    {isError && (
+    {textError && (
       <div className={cx('input-error')}>
         <Error className={cx('input-error__icon')} />
         <div

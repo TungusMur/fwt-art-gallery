@@ -5,16 +5,20 @@ import Textarea from '../Textarea';
 import Button from '../../ui-components/Button';
 import { ReactComponent as DropIcon } from '../../assets/img/profileDropIcon.svg';
 import { handleDrag, handleDropOrInput } from '../func/function';
+import useDragAndDrop from '../hooks/useDragAndDrop';
 import styles from './styles.scss';
+import useInput from '../hooks/useInput';
 
 const cx = classNames.bind(styles);
 
-// type IWindowEditProfile = { type: 'light' | 'dark' };
-
 const WindowEditProfile = () => {
-  const [dragState, setDragState] = useState(false);
-  const [file, setFile] = useState<string | ArrayBuffer | null>(null);
+  const { dragState, file, errorMessage, handleDrag, handleDropOrInput } =
+    useDragAndDrop();
   const uploadRef = useRef<HTMLDivElement>(null);
+  const inputName = useInput('name');
+  const inputYear = useInput('year');
+  const inputLocation = useInput('location');
+  const inputGenres = useInput('name');
 
   return (
     <div className={cx('windowEditProfile')}>
@@ -22,20 +26,10 @@ const WindowEditProfile = () => {
         ref={uploadRef}
         className={cx('windowEditProfile__content')}
         onDragStart={(e) => handleDrag(e)}
-        onDragEnter={(e) =>
-          handleDrag(e, 'enter', (state) => setDragState(state))
-        }
-        onDragLeave={(e) =>
-          handleDrag(e, 'leave', (state) => setDragState(state))
-        }
+        onDragEnter={(e) => handleDrag(e, 'enter')}
+        onDragLeave={(e) => handleDrag(e, 'leave')}
         onDragOver={(e) => handleDrag(e)}
-        onDrop={(e) =>
-          handleDropOrInput(
-            e,
-            (file) => setFile(file),
-            (state) => setDragState(state)
-          )
-        }
+        onDrop={(e) => handleDropOrInput(e)}
       >
         <div className={cx('windowEditProfile-upload')}>
           <div
@@ -65,13 +59,7 @@ const WindowEditProfile = () => {
             <input
               type="file"
               className={cx('windowEditProfile-upload__input')}
-              onChange={(e) =>
-                handleDropOrInput(
-                  e,
-                  (file) => setFile(file),
-                  (state) => setDragState(state)
-                )
-              }
+              onChange={(e) => handleDropOrInput(e)}
             />
             <span className={cx('windowEditProfile-upload__span')}>
               Browse Profile Photo
@@ -84,11 +72,39 @@ const WindowEditProfile = () => {
           })}
         >
           <div className={cx('windowEditProfile-form__content')}>
-            <Input title="Name*" placeholder="" textError="" />
-            <Input title="Years of life" placeholder="" textError="" />
-            <Input title="Location" placeholder="" textError="" />
+            <Input
+              handleChange={(e) => inputName.handleChange(e)}
+              handleFocus={() => inputName.handleFocus()}
+              value={inputName.value}
+              title="Name*"
+              placeholder=""
+              textError={inputName.errorMessage}
+            />
+            <Input
+              handleChange={(e) => inputYear.handleChange(e)}
+              handleFocus={() => inputYear.handleFocus()}
+              value={inputYear.value}
+              title="Years of life"
+              placeholder=""
+              textError={inputYear.errorMessage}
+            />
+            <Input
+              handleChange={(e) => inputLocation.handleChange(e)}
+              handleFocus={() => inputLocation.handleFocus()}
+              value={inputLocation.value}
+              title="Location"
+              placeholder=""
+              textError={inputLocation.errorMessage}
+            />
             <Textarea title="Description" placeholder="" textError="" />
-            <Input title="Genres*" placeholder="" textError="" />
+            <Input
+              handleChange={(e) => inputGenres.handleChange(e)}
+              handleFocus={() => inputGenres.handleFocus()}
+              value={inputGenres.value}
+              title="Genres*"
+              placeholder=""
+              textError={inputGenres.errorMessage}
+            />
           </div>
           <Button className={cx('windowEditProfile-saveBtn')} isFalled>
             <div className={cx('windowEditProfile-saveBtn__content')}>save</div>

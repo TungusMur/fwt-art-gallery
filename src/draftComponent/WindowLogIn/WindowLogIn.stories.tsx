@@ -11,4 +11,6 @@ const Template: ComponentStory<typeof WindowLogIn> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  typeWindow: 'auth',
+};

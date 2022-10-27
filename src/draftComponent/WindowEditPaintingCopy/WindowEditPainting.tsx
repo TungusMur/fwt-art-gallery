@@ -1,12 +1,11 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import classNames from 'classnames/bind';
 import Button from '../../ui-components/Button';
 import Input from '../Input';
 import { ReactComponent as DropIcon } from '../../assets/img/dropIcon.svg';
 import Image from './Image';
-import { handleDrag, handleDropOrInput } from './function';
-import useInput from '../hooks/useInput';
 import useDragAndDrop from '../hooks/useDragAndDrop';
+import useInput from '../hooks/useInput';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);

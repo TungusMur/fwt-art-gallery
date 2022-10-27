@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import DesktopImg from '../../assets/img/card/Desktop.png';
 import Image from './Image';
 
-export const ImageData = ({ data }: { data: string[] }) => (
+const ImageData = ({ data }: { data: string[] }) => (
   <>
     {data.map((item, index) => (
       <Image key={index} className="img" src={item} />

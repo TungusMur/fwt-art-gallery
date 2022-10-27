@@ -2,9 +2,9 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Input from '../Input';
 import Button from '../../ui-components/Button';
-import Portal from '../Portal';
 import ImageAuth from '../../assets/img/imageAuth.png';
 import ImageRegist from '../../assets/img/imageRegist.png';
+import useInput from '../hooks/useInput';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -16,6 +16,8 @@ type IWindowCommon = {
 
 const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
   const [typeWindowState, setTypeWindowState] = useState(typeWindow);
+  const inputEmail = useInput('email');
+  const inputPassword = useInput('password');
   const data = {
     auth: {
       titel: 'Welcome back',
@@ -85,15 +87,21 @@ const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
             </div>
             <div className={cx('WindowLogIn-action')}>
               <Input
+                handleChange={(e) => inputEmail.handleChange(e)}
+                handleFocus={() => inputEmail.handleFocus()}
+                value={inputEmail.value}
                 title="Email"
                 placeholder=""
-                textError="Error"
+                textError={inputEmail.errorMessage}
                 theme={theme}
               />
               <Input
+                handleChange={(e) => inputPassword.handleChange(e)}
+                handleFocus={() => inputPassword.handleFocus()}
+                value={inputPassword.value}
                 title="Password"
                 placeholder=""
-                textError="Error"
+                textError={inputPassword.errorMessage}
                 theme={theme}
               />
             </div>
