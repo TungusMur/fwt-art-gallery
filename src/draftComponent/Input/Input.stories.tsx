@@ -3,14 +3,16 @@ import useInput from '../hooks/useInput';
 import Input from './Input';
 
 const InputForm = () => {
-  const { value, handleChange, handleFocus, errorMessage } = useInput('email');
+  const { value, handleChange, handleFocus, errorMessage } =
+    useInput('description');
 
   return (
     <Input
       handleChange={(e) => handleChange(e)}
       handleFocus={() => handleFocus()}
+      inputType="password"
       value={value}
-      title="password"
+      title="Password"
       placeholder=""
       textError={errorMessage}
       theme="light"

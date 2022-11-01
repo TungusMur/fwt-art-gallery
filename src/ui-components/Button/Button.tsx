@@ -30,6 +30,8 @@ const Button = ({
       btn_disabled: isDisabled,
     })}
     disabled={isDisabled}
+    type="button"
+    aria-label="Найти"
     {...args}
   >
     {children}

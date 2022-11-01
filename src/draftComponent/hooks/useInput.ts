@@ -10,7 +10,7 @@ const errorData = {
   name: { maxLength: 0 } as IProperty,
   location: { maxLength: 0 } as IProperty,
   description: { maxLength: 0 } as IProperty,
-  year: { maxLength: 0 } as IProperty,
+  year: { maxLength: 3, isEmpty: true } as IProperty,
   email: { maxLength: 0, correctEmail: true, isEmpty: true } as IProperty,
   password: { maxLength: 3, isEmpty: true } as IProperty,
 };
@@ -29,9 +29,9 @@ const getErrorMessage = (value: string, type: ITypeInput) => {
     if (
       validation === 'maxLength' &&
       errorData[type].maxLength &&
-      value.length <= errorData[type].maxLength
+      value.length < errorData[type].maxLength
     ) {
-      errorMessage = `длина должна быть больше ${errorData[type].maxLength} символов`;
+      errorMessage = `Длина должна быть не меньше ${errorData[type].maxLength} символов`;
     }
     if (
       errorData[type].isEmpty &&
@@ -60,9 +60,13 @@ const useInput = (type: ITypeInput) => {
     errorMessage: string;
   }>({ value: '', errorMessage: '' });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setValueData({
-      value: e.target.value,
+      value: type === 'year' ? e.target.value.slice(0, 4) : e.target.value,
       errorMessage: getErrorMessage(e.target.value, type),
     });
   };
