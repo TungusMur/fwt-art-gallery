@@ -15,9 +15,14 @@ const Header = () => {
 
   return (
     <div className={cx('header', `header_theme_${theme}`)}>
-      <div className={cx('header-form')}>
-        <a href="" className={cx('header__link')}>
-          <Logo className={cx('header__logo', `header__logo_theme_${theme}`)} />
+      <div className={cx('header-wrapper')}>
+        <a href="" className={cx('header-wrapper__link')}>
+          <Logo
+            className={cx(
+              'header-wrapper__logo',
+              `header-wrapper__logo_theme_${theme}`
+            )}
+          />
         </a>
         <button
           className={cx('header-burger', `header-burger_theme_${theme}`, {
@@ -37,26 +42,23 @@ const Header = () => {
           <div className={cx('header-action__content')}>
             <div className={cx('header-theme')}>
               <Button
-                className={cx('btn-theme', 'header-theme__btn-theme')}
+                className={cx('btn-theme', 'header-btnTheme')}
                 theme={theme}
                 isFalled
               >
                 <div
-                  className={cx('header-theme__btn-theme__titel')}
+                  className={cx('header-btnTheme__content')}
                   onClick={setTheme}
                 >
                   {theme === 'light' ? <DarkTheme /> : <LightTheme />}
                 </div>
               </Button>
               <Button
-                className={cx('btn-text', 'header-theme__btn-text')}
+                className={cx('btn-text', 'header-btnText')}
                 isFalled
                 theme={theme}
               >
-                <div
-                  className={cx('header-theme__btn-text__titel')}
-                  onClick={setTheme}
-                >
+                <div className={cx('header-btnText__titel')} onClick={setTheme}>
                   Dark mode
                 </div>
               </Button>
