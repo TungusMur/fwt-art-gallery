@@ -95,7 +95,7 @@
     }
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 }
@@ -126,13 +126,13 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-left: 47px;
+    margin-left: 18.65%;
 
-    @media screen and (min-width: 321px) {
+    @media screen and (min-width: 768px) {
       margin-left: 20.17%;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1440px) {
       margin: 0;
       flex-direction: row-reverse;
       gap: 60px;
@@ -143,11 +143,11 @@
     right: 0;
   }
 
-  @media screen and (min-width: 321px) {
+  @media screen and (min-width: 768px) {
     width: 60.67%;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     display: inline;
     position: initial;
     height: auto;
@@ -169,7 +169,7 @@
 }
 
 .header-btnText {
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 }
@@ -192,14 +192,20 @@
 
   &__logIn,
   &__signUp {
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
+      font-weight: 500;
+      font-size: 60px;
+      line-height: 73px;
+    }
+
+    @media screen and (min-width: 1440px) {
       font-weight: 700;
       font-size: 16px;
       line-height: 20px;
     }
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
     align-items: center;
     gap: 20px;
@@ -221,7 +227,7 @@
     transition-delay: 0s, 0s;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 }

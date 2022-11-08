@@ -7,18 +7,20 @@
   &__title,
   &__link,
   &__signature {
+    font-family: 'Inter Light';
     font-size: 12px;
     line-height: 17px;
     font-weight: 300;
     color: inherit;
 
-    @media screen and (min-width: 376px) {
+    @media screen and (min-width: 768px) {
       font-size: 16px;
       line-height: 22px;
     }
   }
 
   &__link {
+    white-space: nowrap;
     font-weight: 600;
   }
 
@@ -48,23 +50,23 @@
       }
     }
 
-    @media screen and (min-width: 376px) {
+    @media screen and (min-width: 768px) {
       max-width: 485px;
       gap: 12px;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1440px) {
       gap: 20px;
     }
   }
 
-  @media screen and (min-width: 376px) {
+  @media screen and (min-width: 768px) {
     margin: 40px 0px 48px;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1440px) {
     margin: 40px 0px 40px;
   }
 }
