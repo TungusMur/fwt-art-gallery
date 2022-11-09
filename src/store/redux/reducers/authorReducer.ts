@@ -33,13 +33,19 @@ type IInitialState = {
 const initialState: IInitialState = {
   loading: true,
   data: {
-    _id: '',
-    name: '',
+    _id: '62e148114df711d4f7f68f01',
+    name: 'Vincent van Gogh',
     paintings: [],
-    yearsOfLife: '',
-    description: '',
-    avatar: '',
-    genres: [],
+    yearsOfLife: '30 March 1853 – 29 July 1890',
+    description:
+      'Was a Dutch post-impressionist painter who posthumously became one of the most famous and influential figures in the history of Western art. Was a Dutch post-impressionist painter who posthumously became one of the most famous and influential figures in the history of Western art. Was a Dutch post-impressionist painter who posthumously became one of the most famous and influential figures in the history of Western art.',
+    avatar: '../../assets/img/authorImg.png',
+    genres: [
+      {
+        _id: '62e148104df711d4f7f68eec',
+        name: 'Post-Impressionism',
+      },
+    ],
   },
 };
 
@@ -76,7 +82,7 @@ const authorReducer = createSlice({
       }))
       .addCase(fetchData.pending, (state) => ({
         ...state,
-        loading: true,
+        loading: false,
       }));
   },
 });
