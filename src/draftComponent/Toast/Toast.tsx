@@ -11,11 +11,11 @@ type IToast = {
 
 const Toast = ({ title, theme = 'light' }: IToast) => (
   <div className={cx('toast', `toast_theme_${theme}`)}>
-    <div className={cx('toast-form')}>
-      <ErrorIcon className={cx('toast-form__icon')} />
+    <div className={cx('toast-wrapper')}>
+      <ErrorIcon className={cx('toast-wrapper__icon')} />
       <div
         className={cx(
-          'toast-form__title',
+          'toast-wrapper__title',
           'paragraph_medium',
           'paragraph_medium_base'
         )}

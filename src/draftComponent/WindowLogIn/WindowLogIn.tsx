@@ -37,43 +37,43 @@ const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
 
   return (
     //   <Portal>
-    <div className={cx('WindowLogIn', `WindowLogIn_theme_${theme}`)}>
-      <div className={cx('WindowLogIn__content')}>
-        <div className={cx('WindowLogIn-image')}>
+    <div className={cx('windowLogIn', `windowLogIn_theme_${theme}`)}>
+      <div className={cx('windowLogIn__content')}>
+        <div className={cx('windowLogIn-image')}>
           <img
-            className={cx('WindowLogIn-image__img')}
+            className={cx('windowLogIn-image__img')}
             src={data[typeWindowState].image}
             alt="art"
           />
         </div>
         <div
-          className={cx('WindowLogIn-form', `WindowLogIn-form_theme_${theme}`)}
+          className={cx('windowLogIn-form', `windowLogIn-form_theme_${theme}`)}
         >
           <button
             className={cx(
-              'WindowLogIn-close',
-              `WindowLogIn-close_theme_${theme}`
+              'windowLogIn-close',
+              `windowLogIn-close_theme_${theme}`
             )}
           />
-          <div className={cx('WindowLogIn-form__content')}>
+          <div className={cx('windowLogIn-form__content')}>
             <div
               className={cx(
-                'WindowLogIn-text',
-                `WindowLogIn-text_theme_${theme}`
+                'windowLogIn-text',
+                `windowLogIn-text_theme_${theme}`
               )}
             >
-              <h3 className={cx('WindowLogIn-text__title')}>
+              <h3 className={cx('windowLogIn-text__title')}>
                 {data[typeWindowState].titel}
               </h3>
-              <div className={cx('WindowLogIn-text__info')}>
+              <div className={cx('windowLogIn-text__info')}>
                 {data[typeWindowState].info}
                 <Button
-                  className={cx('btn-text', 'WindowLogIn-swap')}
+                  className={cx('btn-text', 'windowLogIn-btnSwap')}
                   isFalled
                   theme={theme}
                 >
                   <div
-                    className={cx('WindowLogIn-swap__content')}
+                    className={cx('windowLogIn-btnSwap__content')}
                     onClick={() =>
                       setTypeWindowState((typeWindow) =>
                         typeWindow === 'regist' ? 'auth' : 'regist'
@@ -85,7 +85,7 @@ const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
                 </Button>
               </div>
             </div>
-            <div className={cx('WindowLogIn-action')}>
+            <div className={cx('windowLogIn-action')}>
               <Input
                 handleChange={(e) => inputEmail.handleChange(e)}
                 handleFocus={() => inputEmail.handleFocus()}
@@ -96,6 +96,7 @@ const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
                 theme={theme}
               />
               <Input
+                inputType="password"
                 handleChange={(e) => inputPassword.handleChange(e)}
                 handleFocus={() => inputPassword.handleFocus()}
                 value={inputPassword.value}
@@ -105,8 +106,8 @@ const WindowLogIn = ({ theme = 'light', typeWindow }: IWindowCommon) => {
                 theme={theme}
               />
             </div>
-            <Button className={cx('WindowLogIn-submit')} theme={theme}>
-              <div className={cx('WindowLogIn-submit__content')}>
+            <Button className={cx('windowLogIn-submit')} theme={theme}>
+              <div className={cx('windowLogIn-submit__content')}>
                 {data[typeWindowState].mainBtn}
               </div>
             </Button>

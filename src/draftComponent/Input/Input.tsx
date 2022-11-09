@@ -104,7 +104,7 @@ const Input = ({
               'paragraph_light_base'
             )}
           >
-            w{textError}
+            {textError}
           </div>
         </div>
       )}
