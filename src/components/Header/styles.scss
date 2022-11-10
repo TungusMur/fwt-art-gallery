@@ -31,7 +31,8 @@
 }
 
 .header-wrapper {
-  width: var(--grid-width);
+  min-width: var(--grid-width);
+  width: var(--adaptive-width);
   height: var(--header-height);
   display: flex;
   align-items: center;

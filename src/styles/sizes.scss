@@ -1,27 +1,27 @@
 html {
-  --primary-width: 1440px;
-  --grid-width: 1240px;
-  --header-height: 80px;
-  --footer-height: 166px;
+  --primary-width: 320px;
+  --grid-width: 280px;
+  --adaptive-width: 87.5%;
+  --header-height: 64px;
+  --footer-height: 185px;
 
-  @media screen and (max-width: 1440px) {
-    --grid-width: 86.12%;
-  }
-
-  @media screen and (max-width: 1280px) {
-    --grid-width: 96.875%;
-  }
-
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 768px) {
     --primary-width: 768px;
-    --grid-width: 94.79%;
+    --adaptive-width: 94.79%;
+    --grid-width: 728px;
     --header-height: 88px;
   }
 
-  @media screen and (max-width: 320px) {
-    --primary-width: 320px;
-    --grid-width: 87.5%;
-    --header-height: 64px;
-    --footer-height: 185px;
+  @media screen and (min-width: 1280px) {
+    --primary-width: 1280px;
+    --adaptive-width: 96.875%;
+    --grid-width: 1240px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    --primary-width: 1440px;
+    --adaptive-width: 1240px;
+    --header-height: 80px;
+    --footer-height: 166px;
   }
 }
