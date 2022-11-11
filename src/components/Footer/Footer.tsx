@@ -13,11 +13,11 @@ type IFooter = {
 
 const Footer = ({ theme = 'light' }: IFooter) => (
   <div className={cx('footer', `footer_theme_${theme}`)}>
-    <div className={cx('footer-form')}>
+    <div className={cx('footer-wrapper')}>
       <div
         className={cx(
-          'footer-form__content',
-          `footer-form__content_theme_${theme}`
+          'footer-wrapper__content',
+          `footer-wrapper__content_theme_${theme}`
         )}
       >
         <div className={cx('footer__title')}>

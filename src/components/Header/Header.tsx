@@ -29,7 +29,7 @@ const Header = () => {
             'header-burger_active': activeBurger,
           })}
           onClick={() => {
-            setActiveBurger((state) => !state);
+            setActiveBurger((prev) => !prev);
           }}
         >
           <div className={cx('header-burger__line')}></div>
