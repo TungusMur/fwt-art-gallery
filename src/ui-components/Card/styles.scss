@@ -10,12 +10,12 @@
   &:hover {
     cursor: pointer;
 
-    .card-curtain {
-      right: -24px;
-    }
-
     & .card-img {
       background-size: 122%;
+
+      @media screen and (max-width: 1439px) {
+        background-size: 100%;
+      }
     }
   }
 }
@@ -47,14 +47,14 @@
     z-index: 2;
   }
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     height: 66px;
 
     &::before {
       display: none;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 236px;
     height: 45px;
   }
@@ -79,10 +79,10 @@
   background-color: var(--primary-color);
   z-index: 1;
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     padding: 12px;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     padding: 8px;
   }
 }
@@ -90,14 +90,17 @@
 .card-curtain {
   z-index: 0;
   position: absolute;
-  right: 0px;
+  display: none;
   height: inherit;
   width: 24px;
   background: var(--accent-color);
-  display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.5s;
+
+  @media screen and (max-width: 1439px) {
+    display: flex;
+    right: -24px;
+  }
 }
 
 .card-arrow {

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
@@ -7,7 +8,7 @@ const cx = classNames.bind(styles);
 type ILink = {
   content: string;
   url: string;
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
   args?: HTMLAnchorElement;
 };
 

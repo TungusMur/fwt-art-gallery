@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Card from '../Card';
-import { ICommonCard } from '../../commonTypes';
+import { ICommonCard, ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
 type ICardsData = {
   cardsData: ICommonCard[];
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
 };
 
 const CardList = ({ cardsData, theme = 'light' }: ICardsData) => {

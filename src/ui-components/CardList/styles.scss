@@ -1,30 +1,35 @@
 .cardList {
-  width: var(--grid-width);
+  min-width: var(--grid-width);
+  width: var(--adaptive-width);
   background-color: var(--primary-color);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 32px;
+  gap: 20px;
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (min-width: 768px) {
     gap: 24px;
   }
 
-  @media screen and (max-width: 768px) {
-    gap: 20px;
+  @media screen and (min-width: 1440px) {
+    gap: 32px;
   }
 }
 
 .cardList-item {
-  width: 392px;
-  height: 260px;
+  width: 100%;
+  $width: 280;
+  $height: 185;
+  aspect-ratio: $width / $height;
 
-  @media screen and (max-width: 1400px) {
-    width: 352px;
-    height: 220px;
+  @media screen and (min-width: 768px) {
+    width: 48.34%;
+    $width: 352;
+    $height: 220;
   }
-  @media screen and (max-width: 768px) {
-    width: 280px;
-    height: 185px;
+
+  @media screen and (min-width: 1440px) {
+    $width: 392;
+    width: 392px;
+    $height: 260;
   }
 }
