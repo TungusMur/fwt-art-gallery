@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { ICommonCard } from '../../commonTypes';
+import { ICommonCard, ITheme } from '../../commonTypes';
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
 type ICard = ICommonCard & {
-  theme?: 'light' | 'dark';
+  theme?: ITheme;
 };
 
 const Card = ({
@@ -29,10 +29,8 @@ const Card = ({
       />
       <div className={cx('card-content')}>
         <div className={cx('card-description')}>
-          <div className={cx('card-title')}>
-            <h4>{title}</h4>
-          </div>
-          <div className={cx('paragraph_medium', 'paragraph_medium_small')}>
+          <h4 className={cx('card-title')}>{title}</h4>
+          <div className={cx('paragraph__small_medium')}>
             <div className={cx('card-yearsLife')}>{yearsLife}</div>
           </div>
         </div>

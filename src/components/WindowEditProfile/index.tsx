@@ -1,0 +1,1 @@
+import WindowEditProfile from './WindowEditProfile';

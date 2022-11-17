@@ -1,0 +1,147 @@
+.multiselect {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.multiselect-form {
+  position: relative;
+  border-radius: 4px;
+
+  &_theme {
+    &_light {
+      background: #ffffff;
+    }
+
+    &_dark {
+      background: #1a1818;
+    }
+  }
+}
+
+.multiselect-labelList {
+  $parent: &;
+  background: inherit;
+  height: 46px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+
+  &_theme {
+    &_light {
+      border: 1px solid #dedede;
+
+      &:hover {
+        border: 1px solid #9c9c9c;
+      }
+
+      &#{$parent}_active {
+        border: 1px solid #575757;
+
+        &:hover {
+          border: 1px solid #575757;
+        }
+      }
+
+      & #{$parent}__content {
+        color: #575757;
+      }
+    }
+
+    &_dark {
+      border: 1px solid #1a1818;
+
+      &:hover {
+        border: 1px solid #575757;
+      }
+
+      &#{$parent}_active {
+        border: 1px solid #dedede;
+
+        &:hover {
+          border: 1px solid #dedede;
+        }
+      }
+
+      & #{$parent}__content {
+        color: #dedede;
+      }
+    }
+  }
+
+  &__content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: calc(100% - 40px);
+  }
+
+  &__item {
+    display: inline-flex;
+    margin-right: 12px;
+  }
+}
+
+.multiselect-filterList {
+  $parent: &;
+  background: inherit;
+  height: 0;
+  transition: 0.5s height;
+  overflow: hidden;
+  position: absolute;
+  top: 23px;
+  width: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+  z-index: 0;
+
+  &_theme {
+    &_light {
+      border: 1px solid #dedede;
+
+      & #{$parent}__item {
+        &:hover {
+          background: rgba(18, 18, 18, 0.05);
+        }
+      }
+    }
+
+    &_dark {
+      border: 1px solid #1a1818;
+
+      & #{$parent}__item {
+        &:hover {
+          background: rgba(205, 205, 205, 0.05);
+        }
+      }
+    }
+  }
+
+  &__content {
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    gap: 12px;
+    padding: 9px 15px;
+    width: -webkit-fill-available;
+  }
+
+  &_active {
+    height: 263px;
+  }
+}

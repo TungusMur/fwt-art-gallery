@@ -1,0 +1,206 @@
+.windowEditPainting {
+  width: -webkit-fill-available;
+  height: 100vh;
+  display: flex;
+  background: rgba(3, 3, 3, 0.3);
+  justify-content: center;
+  align-items: center;
+  min-height: 644px;
+
+  &__content {
+    width: 100%;
+    min-height: 644px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+
+    &_theme {
+      &_light {
+        background: #fcfcfc;
+      }
+
+      &_dark {
+        background: #121212;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 693px;
+      min-height: auto;
+      height: -webkit-fill-available;
+      max-height: 723px;
+    }
+  }
+}
+
+.windowEditPainting-form {
+  width: 81.25%;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 48px;
+
+    &__inputName {
+      width: 68.96%;
+    }
+
+    &__inputYearCreation {
+      width: 21.29%;
+    }
+  }
+}
+
+.windowEditPainting-upload {
+  width: 87.5%;
+  min-height: 187px;
+  border-image: url(../../assets/img/borderPainting.png) 17 fill/ 20px round;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &_theme {
+    &_light {
+      color: #ffffff;
+      --titelColor: #575757;
+      --iconOpacity: 0.9;
+      --infoColor: #9c9c9c;
+    }
+
+    &_dark {
+      color: #1a1818;
+      --titelColor: #dedede;
+      --iconOpacity: 0.8;
+      --infoColor: #575757;
+    }
+  }
+
+  &_drop {
+    border-image: none;
+  }
+
+  &_dragEnter {
+    background: currentColor;
+    border-image: url(../../assets/img/borderPainting.png) 17 fill/ 20px round;
+  }
+
+  &__icon {
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+    opacity: var(--iconOpacity);
+
+    @media screen and (min-width: 768px) {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  &__titel {
+    font-family: 'Inter Light';
+    line-height: 22px;
+    font-size: 0px;
+    margin: 20px 0px 12px;
+    color: var(--titelColor);
+
+    &_dragEnter {
+      pointer-events: none;
+    }
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__span {
+    font-family: 'Inter Medium';
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      background-color: currentColor;
+      width: 100%;
+      position: absolute;
+      height: 1px;
+      bottom: -1px;
+    }
+
+    &::after {
+      position: relative;
+      content: 'browse image';
+
+      @media screen and (min-width: 768px) {
+        content: 'browse';
+      }
+    }
+  }
+
+  &__info {
+    pointer-events: none;
+    line-height: 17px;
+    text-align: center;
+    width: 227px;
+    color: var(--infoColor);
+
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
+  }
+
+  &__image {
+    pointer-events: none;
+    max-width: 100%;
+    max-height: 187px;
+
+    @media screen and (min-width: 768px) {
+      max-height: 327px;
+    }
+  }
+
+  // @media screen and (min-width: 321px) {
+  //   width: 71.13%;
+  // }
+
+  @media screen and (min-width: 768px) {
+    min-height: 327px;
+  }
+}
+
+.windowEditPainting-btnClose {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  cursor: pointer;
+
+  &__icon * {
+    fill: currentColor;
+  }
+}

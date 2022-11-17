@@ -1,0 +1,310 @@
+.slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &_theme {
+    &_light {
+      background: rgba(3, 3, 3, 0.3);
+    }
+
+    &_dark {
+      background: rgba(3, 3, 3, 0.6);
+    }
+  }
+}
+
+.slider-header {
+  top: 20px;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: calc(100% - 48px);
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+
+  @media screen and (min-width: 615px) {
+    top: 40px;
+    width: calc(100% - 80px);
+  }
+
+  @media screen and (min-width: 769px) {
+    top: 60px;
+  }
+
+  @media screen and (min-width: 1281px) {
+    width: calc(100% - 240px);
+  }
+}
+
+.slider-btnImg {
+  position: relative;
+
+  &__content::before {
+    width: max-content;
+    position: absolute;
+    color: #dedede;
+    content: 'Remove the cover';
+    text-transform: uppercase;
+    font-size: '';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    left: 40px;
+    border-bottom: 1.6px solid #dedede;
+  }
+}
+
+.slider-mainImg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.slider-wrapper {
+  $parent: &;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+
+  &__btn {
+    display: none;
+    cursor: pointer;
+    padding: 0px 10px;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    z-index: 2;
+
+    &:hover {
+      #{$parent}__icon * {
+        fill: #fff;
+      }
+    }
+
+    &:disabled {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 615px) {
+      display: initial;
+    }
+  }
+
+  &__btnPrev {
+    left: 0;
+  }
+
+  &__btnNext {
+    transform: rotateZ(180deg);
+    right: 0;
+  }
+
+  &__icon {
+    pointer-events: none;
+
+    & * {
+      fill: #9c9c9c;
+    }
+  }
+}
+
+.slider-data {
+  position: relative;
+  width: 100%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s left;
+}
+
+.slider-item {
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  transition: 0.4s left;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+
+  &_prev {
+    z-index: 0;
+    left: -100%;
+  }
+
+  &_active {
+    z-index: 1;
+    left: 0;
+  }
+
+  &_next {
+    z-index: 0;
+    left: 100%;
+  }
+
+  &__img {
+    max-height: 100%;
+
+    @media screen and (min-width: 769px) {
+      max-height: max-content;
+      width: 100%;
+    }
+  }
+}
+
+.slider-description {
+  position: absolute;
+  width: 253px;
+  min-height: 68px;
+  padding: 0px 12px;
+  display: flex;
+  left: 0;
+  bottom: 14.08%;
+  align-items: center;
+
+  &_theme {
+    &_light {
+      color: #9b4b4b;
+      --titel-color: #121212;
+      background: #fcfcfc;
+    }
+
+    &_dark {
+      color: #ab8956;
+      --titel-color: #ffffff;
+      background: #121212;
+    }
+  }
+
+  &__content {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: currentColor;
+
+    &::before {
+      height: 100%;
+      width: 2px;
+      background: currentColor;
+      position: absolute;
+      left: -20px;
+      top: 0;
+
+      @media screen and (min-width: 615px) {
+        content: '';
+      }
+    }
+
+    @media screen and (min-width: 615px) {
+      gap: 8px;
+    }
+  }
+
+  &__date {
+    color: currentColor;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 10px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 615px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__titel {
+    color: var(--titel-color);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 615px) {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  &__action {
+    display: flex;
+    position: absolute;
+    bottom: -73.6%;
+    gap: 20px;
+    left: 20px;
+
+    @media screen and (min-width: 615px) {
+      bottom: auto;
+      right: 20px;
+      top: 20px;
+      left: auto;
+    }
+  }
+
+  @media screen and (min-width: 615px) {
+    padding: 0px 20px;
+    width: 458px;
+    min-height: 122px;
+    bottom: 5.86%;
+    left: 5.21%;
+  }
+
+  @media screen and (min-width: 769px) {
+    width: 498px;
+    min-height: 122px;
+    left: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 1281px) {
+    left: 8.33%;
+    bottom: 12.5%;
+  }
+}
+.slider-counter {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  color: #dedede;
+  font-family: 'Cormorant SC SemiBold';
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+
+  @media screen and (min-width: 615px) {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 100%;
+    bottom: 5.86%;
+    right: 5.21%;
+  }
+
+  @media screen and (min-width: 769px) {
+    right: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 769px) {
+    right: 3.125%;
+    bottom: 2.64%;
+  }
+
+  @media screen and (min-width: 1281px) {
+    right: 8.33%;
+    bottom: 12.5%;
+  }
+}

@@ -1,0 +1,129 @@
+.windowDelete {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &_theme {
+    &_light {
+      background: rgba(3, 3, 3, 0.3);
+    }
+
+    &_dark {
+      background: rgba(3, 3, 3, 0.6);
+    }
+  }
+
+  &__content {
+    position: relative;
+    padding: 20px 33px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: -webkit-fill-available;
+    align-items: center;
+
+    &_theme {
+      &_light {
+        background: #ffffff;
+        color: #575757;
+      }
+
+      &_dark {
+        background: #121212;
+        color: #9c9c9c;
+      }
+    }
+
+    @media screen and (min-width: 321px) {
+      width: 239px;
+      padding: 60px 40px;
+      gap: 32px;
+    }
+  }
+
+  &__btnClose {
+    top: 24px;
+    right: 24px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+
+    @media screen and (min-width: 321px) {
+      display: flex;
+    }
+  }
+
+  &__iconClose * {
+    fill: currentColor;
+  }
+
+  &__icon {
+    display: none;
+
+    & * {
+      fill: currentColor;
+    }
+
+    @media screen and (min-width: 321px) {
+      display: initial;
+    }
+  }
+
+  @media screen and (min-width: 321px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.windowDelete-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+
+  &_theme {
+    &_light {
+      --title-color: #575757;
+      --description-color: #9c9c9c;
+    }
+
+    &_dark {
+      --title-color: #dedede;
+      --description-color: #9c9c9c;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--title-color);
+    font-family: 'Inter Medium';
+  }
+
+  &__description {
+    font-family: 'Inter';
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 17px;
+    color: var(--description-color);
+    text-align: center;
+  }
+}
+
+.windowDelete-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

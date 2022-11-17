@@ -1,0 +1,37 @@
+.filterItem {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 17px;
+
+  &_theme {
+    &_light {
+      color: #575757;
+
+      &:hover {
+        color: #121212;
+      }
+    }
+
+    &_dark {
+      color: #dedede;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  &_isSelected {
+    font-weight: 600;
+
+    &.filterItem_theme {
+      &_light {
+        color: #121212;
+      }
+
+      &_dark {
+        color: #ffffff;
+      }
+    }
+  }
+}

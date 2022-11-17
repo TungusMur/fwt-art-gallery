@@ -74,9 +74,10 @@ button {
   &::before {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     width: 100%;
     height: 1px;
+    background-color: currentColor;
   }
 
   &.btn_falled {
@@ -87,16 +88,8 @@ button {
     &_light {
       color: var(--primary-color-dark-gray);
 
-      &::before {
-        background: var(--primary-color-dark-gray);
-      }
-
       &:disabled {
         color: var(--primary-color-light-gray);
-
-        &::before {
-          background: var(--primary-color-light-gray);
-        }
       }
 
       &:hover,
@@ -104,26 +97,14 @@ button {
         box-shadow: none;
         color: var(--primary-color-black);
         background: none;
-
-        &::before {
-          background: var(--primary-color-black);
-        }
       }
     }
 
     &_dark {
       color: var(--primary-color-light-gray);
 
-      &::before {
-        background: var(--primary-color-light-gray);
-      }
-
       &:disabled {
         color: var(--secondary-color-gray);
-
-        &::before {
-          background: var(--secondary-color-gray);
-        }
       }
 
       &:hover,
@@ -131,21 +112,40 @@ button {
         box-shadow: none;
         color: var(--primary-color-white);
         background: none;
-
-        &::before {
-          background: var(--primary-color-white);
-        }
       }
     }
   }
 }
 
 .btn-icon {
+  $parent: &;
   width: 28px;
   height: 28px;
   border-radius: 4px;
+
+  & * {
+    fill: currentColor;
+  }
+
   &.btn_theme {
     &_light {
+      // & * {
+      color: #575757;
+      // }
+
+      &:hover,
+      &:focus {
+        color: #121212;
+      }
+
+      &:disabled {
+        opacity: initial;
+
+        // & * {
+        color: #575757;
+        // }
+      }
+
       &.btn_falled {
         background: var(--secondary-color-white);
 
@@ -153,26 +153,108 @@ button {
         &:focus {
           box-shadow: none;
         }
+
+        &:disabled {
+          opacity: initial;
+          background: rgba(252, 252, 252, 0.5);
+
+          // &:hover,
+          // &:focus {
+          //   background: rgba(252, 252, 252, 0.5);
+          // }
+        }
       }
 
-      &:disabled {
-        opacity: 0.5;
+      &#{$parent}_over {
+        background: rgba(252, 252, 252, 0.1);
+
+        &:hover,
+        &:focus {
+          background: rgba(252, 252, 252, 0.2);
+        }
+
+        &:disabled {
+          opacity: initial;
+          background: rgba(255, 255, 255, 0.5);
+
+          // &:hover,
+          // &:focus {
+          //   background: rgba(255, 255, 255, 0.5);
+          // }
+        }
       }
     }
 
     &_dark {
+      // & * {
+      color: #dedede;
+      // }
+
+      &:hover,
+      &:focus {
+        color: #ffffff;
+      }
+
+      &:disabled {
+        opacity: initial;
+
+        // & * {
+        color: #dedede;
+        // }
+      }
+
       &.btn_falled {
-        background: var(--secondary-color-black);
+        background: #1a1818;
 
         &:hover,
         &:focus {
           box-shadow: none;
         }
+
+        &:disabled {
+          opacity: initial;
+          background: rgba(26, 24, 24, 0.5);
+
+          // &:hover,
+          // &:focus {
+          //   background: rgba(26, 24, 24, 0.5);
+          // }
+        }
       }
 
-      &:disabled {
-        opacity: 0.5;
+      &#{$parent}_over {
+        background: rgba(26, 24, 24, 0.1);
+
+        &:hover,
+        &:focus {
+          background: rgba(26, 24, 24, 0.2);
+        }
+
+        &:disabled {
+          opacity: initial;
+          background: rgba(26, 24, 24, 0.5);
+
+          // &:hover,
+          // &:focus {
+          //   background: rgba(26, 24, 24, 0.5);
+          // }
+        }
       }
+    }
+  }
+
+  &_over {
+    & * {
+      fill: #dedede;
+    }
+
+    &:hover *,
+    &:focus * {
+      fill: #dedede;
+    }
+
+    &:disabled * {
+      fill: #dedede;
     }
   }
 }
@@ -182,6 +264,7 @@ button {
   box-shadow: none;
   height: 40px;
   width: 40px;
+
   &.btn_theme {
     &_light {
       &.btn_falled {
@@ -211,6 +294,7 @@ button {
   border-radius: 20px;
   height: 60px;
   width: 60px;
+
   &.btn_theme {
     &_light {
       &.btn_falled {
@@ -227,6 +311,7 @@ button {
         border: 1px solid var(--primary-color-light-gray);
       }
     }
+
     &_dark {
       &.btn_falled {
         background: var(--secondary-color-black);

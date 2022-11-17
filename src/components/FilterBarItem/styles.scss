@@ -1,0 +1,78 @@
+.filterBarItem {
+  display: flex;
+  flex-direction: column;
+
+  &_theme {
+    &_light {
+      color: #121212;
+    }
+
+    &_dark {
+      color: #ffffff;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  &__menu {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: currentColor;
+    width: 100%;
+  }
+
+  &__icon {
+    pointer-events: none;
+    width: 18px;
+    height: auto;
+    aspect-ratio: 1/1;
+    right: 0;
+    position: absolute;
+
+    &_theme {
+      &_light {
+        color: #575757;
+      }
+
+      &_dark {
+        color: #dedede;
+      }
+    }
+
+    & * {
+      fill: currentColor;
+    }
+  }
+}
+
+.filterBarItem-list {
+  max-height: 104px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 12px;
+  margin-top: 16px;
+
+  &__item {
+    width: max-content;
+    font-family: 'Inter Light';
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 17px;
+    color: #575757;
+
+    &_isActive {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 17px;
+      color: #121212;
+    }
+  }
+}
